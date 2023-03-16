@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7125C5E229C363D000B85429 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E129C363D000B85429 /* Resources.swift */; };
+		7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E329C36F1E00B85429 /* MainViewController.swift */; };
+		7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E529C36F5500B85429 /* AccountViewController.swift */; };
 		7186BC4F29C342D600DCB921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC4E29C342D600DCB921 /* AppDelegate.swift */; };
 		7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5029C342D600DCB921 /* SceneDelegate.swift */; };
-		7186BC5329C342D600DCB921 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5229C342D600DCB921 /* ViewController.swift */; };
+		7186BC5329C342D600DCB921 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5229C342D600DCB921 /* TabBarController.swift */; };
 		7186BC5929C342D600DCB921 /* DailyFood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */; };
 		7186BC5B29C342D700DCB921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5A29C342D700DCB921 /* Assets.xcassets */; };
 		7186BC5E29C342D700DCB921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5C29C342D700DCB921 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7125C5E129C363D000B85429 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		7125C5E329C36F1E00B85429 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7125C5E529C36F5500B85429 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		7186BC4B29C342D600DCB921 /* DailyFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7186BC4E29C342D600DCB921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7186BC5029C342D600DCB921 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7186BC5229C342D600DCB921 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7186BC5229C342D600DCB921 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7186BC5829C342D600DCB921 /* DailyFood.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyFood.xcdatamodel; sourceTree = "<group>"; };
 		7186BC5A29C342D700DCB921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7186BC5D29C342D700DCB921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,9 +65,27 @@
 		7106D70D29C343DA001F754E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7186BC5229C342D600DCB921 /* ViewController.swift */,
+				7186BC5229C342D600DCB921 /* TabBarController.swift */,
+				7125C5E329C36F1E00B85429 /* MainViewController.swift */,
+				7125C5E529C36F5500B85429 /* AccountViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7125C5DF29C363AA00B85429 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7125C5E029C363BE00B85429 /* Resources */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7125C5E029C363BE00B85429 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7125C5E129C363D000B85429 /* Resources.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		7186BC4229C342D500DCB921 = {
@@ -84,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				7106D70C29C343CF001F754E /* Application */,
+				7125C5DF29C363AA00B85429 /* Helpers */,
 				7106D70D29C343DA001F754E /* Controllers */,
 				7106D70B29C343B6001F754E /* SupportingFiles */,
 				7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */,
@@ -161,9 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7186BC5329C342D600DCB921 /* ViewController.swift in Sources */,
+				7186BC5329C342D600DCB921 /* TabBarController.swift in Sources */,
 				7186BC5929C342D600DCB921 /* DailyFood.xcdatamodeld in Sources */,
+				7125C5E229C363D000B85429 /* Resources.swift in Sources */,
 				7186BC4F29C342D600DCB921 /* AppDelegate.swift in Sources */,
+				7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */,
+				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
 				7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8U5JRPA4B7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyFood/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -316,9 +345,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PipsSolution.DailyFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -329,6 +361,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8U5JRPA4B7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyFood/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -342,9 +375,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = PipsSolution.DailyFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
