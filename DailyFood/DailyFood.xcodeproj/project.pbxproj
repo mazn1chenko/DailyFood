@@ -16,6 +16,8 @@
 		7186BC5929C342D600DCB921 /* DailyFood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */; };
 		7186BC5B29C342D700DCB921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5A29C342D700DCB921 /* Assets.xcassets */; };
 		7186BC5E29C342D700DCB921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5C29C342D700DCB921 /* LaunchScreen.storyboard */; };
+		719DEEC029C3757700264668 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEBF29C3757700264668 /* NavBarController.swift */; };
+		719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEC229C387AD00264668 /* AccountViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		7186BC5A29C342D700DCB921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7186BC5D29C342D700DCB921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7186BC5F29C342D700DCB921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		719DEEBF29C3757700264668 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
+		719DEEC229C387AD00264668 /* AccountViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +69,9 @@
 		7106D70D29C343DA001F754E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7186BC5229C342D600DCB921 /* TabBarController.swift */,
 				7125C5E329C36F1E00B85429 /* MainViewController.swift */,
 				7125C5E529C36F5500B85429 /* AccountViewController.swift */,
+				719DEEC229C387AD00264668 /* AccountViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -110,10 +114,20 @@
 				7106D70C29C343CF001F754E /* Application */,
 				7125C5DF29C363AA00B85429 /* Helpers */,
 				7106D70D29C343DA001F754E /* Controllers */,
+				719DEEC129C3773700264668 /* Base */,
 				7106D70B29C343B6001F754E /* SupportingFiles */,
 				7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */,
 			);
 			path = DailyFood;
+			sourceTree = "<group>";
+		};
+		719DEEC129C3773700264668 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7186BC5229C342D600DCB921 /* TabBarController.swift */,
+				719DEEBF29C3757700264668 /* NavBarController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,10 +203,12 @@
 				7186BC5329C342D600DCB921 /* TabBarController.swift in Sources */,
 				7186BC5929C342D600DCB921 /* DailyFood.xcdatamodeld in Sources */,
 				7125C5E229C363D000B85429 /* Resources.swift in Sources */,
+				719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */,
 				7186BC4F29C342D600DCB921 /* AppDelegate.swift in Sources */,
 				7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */,
 				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
 				7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */,
+				719DEEC029C3757700264668 /* NavBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

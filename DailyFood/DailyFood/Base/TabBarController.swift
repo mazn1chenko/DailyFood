@@ -13,9 +13,7 @@ enum Tabs: Int {
 }
 
 class TabBarController: UITabBarController {
-    
-    let searchController = UISearchController()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +23,9 @@ class TabBarController: UITabBarController {
     
     func settingsTabBar(){
         
-        tabBar.backgroundColor = .lightGray
+        tabBar.backgroundColor = .systemGray2
+        tabBar.layer.borderWidth = 0.2
+        
         
         let mainController = MainViewController()
         let accountController = AccountViewController()
