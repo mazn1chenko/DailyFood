@@ -13,7 +13,7 @@ class AccountViewController: UIViewController{
     let imageClientImage = UIImageView()
     let tableView = UITableView()
     let identifier = "MyCell"
-    let arrayOfType = ["Мої закази","Мої дані","Пустой раздел","Пустой раздел","Пустой раздел","Пустой раздел","Тех. підтримка",]
+    let arrayOfType = ["Мої закази","Мої дані","Мої бонуси","Адреса для доставки", "Тех. підтримка",]
     
     override func viewDidLoad(){
         super.viewDidLoad()
