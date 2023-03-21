@@ -12,8 +12,18 @@ class NavBarController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       //buttonsNavBar()
+       settingsNavBar()
+        
         
     }
+    
+    func settingsNavBar()  {
+        
+        navigationController?.navigationBar.isTranslucent = false
+        navigationBar.barTintColor = .lightGray
+        navigationController?.navigationBar.backgroundColor = .lightGray
+        
+    }
+
     
 }

@@ -19,7 +19,7 @@ class MainViewController: UIViewController{
     
     //private let identifier = "MyCell"
     
-    let menuFood = ["Перші блюда","Гарніри","#ЛюблюВаню","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Унікальне :)",]
+    let menuFood = ["Перші блюда","Гарніри","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Унікальне :)",]
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -50,22 +50,30 @@ class MainViewController: UIViewController{
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = .lightGray
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.reuseID)
-        collectionView.frame = view.bounds
-        view.addSubview(collectionView)
 
         
     }
     
     func layout() {
+        view.addSubview(collectionView!)
 
+        NSLayoutConstraint.activate([
+            collectionView!.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView!.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
         
     }
-
- 
+    
+    
+    
     func buttonsNavBar() {
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Knopka Blyat", style: .done, target: self, action: #selector(buttonMenu(action:)))
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Button", style: .done, target: self, action: #selector(buttonMenu(action:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "basket"), style: .done, target: self, action: #selector(buttonMenu(action:)))
         
     }
@@ -75,6 +83,7 @@ class MainViewController: UIViewController{
             navigationController?.pushViewController(basketVC, animated: true)
         }
     }
+
 }
 
 
@@ -97,6 +106,9 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
     
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = TypeOfFoodSelected()
+        vc.navigationItem.title = menuFood[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

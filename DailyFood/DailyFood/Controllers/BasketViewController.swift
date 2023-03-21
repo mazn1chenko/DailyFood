@@ -40,7 +40,16 @@ class BasketViewController: UIViewController {
         buyButton.backgroundColor = .red
         buyButton.setTitleColor(.white, for: .normal)
         
+        buyButton.addTarget(self, action: #selector(buyItems(action:)), for: .touchUpInside)
         
+        
+    }
+    
+    @objc func buyItems(action: UIButton) {
+        
+        if action == action {
+            print("buyItems")
+        }
     }
     
     func layout() {
