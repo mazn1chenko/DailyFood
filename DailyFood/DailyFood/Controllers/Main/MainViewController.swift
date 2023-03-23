@@ -20,6 +20,7 @@ class MainViewController: UIViewController{
     //private let identifier = "MyCell"
     
     let menuFood = ["Перші блюда","Гарніри","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Унікальне :)",]
+    let menuFoodImage = ["firstPNG", "garnirPNG", "saladPNG", "snackPNG", "coctailsPNG", "dessertPNG", "breakfastPNG", "babyPNG", "cheffPNG", "lolPNG"]
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -96,7 +97,7 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.reuseID, for: indexPath) as? MenuCollectionViewCell
         
-        cell!.configureCollectionCell(model: menuFood[indexPath.row])
+        cell!.configureCollectionCell(model: menuFood[indexPath.row], image: menuFoodImage[indexPath.row])
         return cell!
     }
     

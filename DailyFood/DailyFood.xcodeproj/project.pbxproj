@@ -22,6 +22,7 @@
 		7186BC5E29C342D700DCB921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5C29C342D700DCB921 /* LaunchScreen.storyboard */; };
 		719DEEC029C3757700264668 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEBF29C3757700264668 /* NavBarController.swift */; };
 		719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEC229C387AD00264668 /* AccountViewCell.swift */; };
+		71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB59BD29CC8D440024356E /* ApiManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		7186BC5F29C342D700DCB921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719DEEBF29C3757700264668 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		719DEEC229C387AD00264668 /* AccountViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewCell.swift; sourceTree = "<group>"; };
+		71DB59BD29CC8D440024356E /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		7186BC4D29C342D600DCB921 /* DailyFood */ = {
 			isa = PBXGroup;
 			children = (
+				71DB59BA29CC8D140024356E /* Api */,
 				7106D70C29C343CF001F754E /* Application */,
 				7125C5DF29C363AA00B85429 /* Helpers */,
 				7106D70D29C343DA001F754E /* Controllers */,
@@ -164,6 +167,30 @@
 				719DEEBF29C3757700264668 /* NavBarController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		71DB59BA29CC8D140024356E /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				71DB59BC29CC8D2A0024356E /* ApiModel */,
+				71DB59BB29CC8D210024356E /* ApiManager */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		71DB59BB29CC8D210024356E /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				71DB59BD29CC8D440024356E /* ApiManager.swift */,
+			);
+			path = ApiManager;
+			sourceTree = "<group>";
+		};
+		71DB59BC29CC8D2A0024356E /* ApiModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApiModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +273,7 @@
 				7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */,
 				7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */,
 				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
+				71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */,
 				7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */,
 				7160BE3629C9DFFE00090303 /* TypeOfFoodSelected.swift in Sources */,
 				719DEEC029C3757700264668 /* NavBarController.swift in Sources */,

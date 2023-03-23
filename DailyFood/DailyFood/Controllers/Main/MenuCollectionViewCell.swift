@@ -13,6 +13,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     let nameOfTypeFood = UILabel()
     
+    let backGroungImageCell = UIImageView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -33,22 +35,36 @@ class MenuCollectionViewCell: UICollectionViewCell {
     func setup(){
         nameOfTypeFood.translatesAutoresizingMaskIntoConstraints = false
         nameOfTypeFood.textAlignment = .center
+        nameOfTypeFood.textColor = .orange
+        
+        backGroungImageCell.translatesAutoresizingMaskIntoConstraints = false
         
     }
     func layout(){
+        addSubview(backGroungImageCell)
         addSubview(nameOfTypeFood)
+
         
         NSLayoutConstraint.activate([
             nameOfTypeFood.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameOfTypeFood.centerYAnchor.constraint(equalTo: centerYAnchor),
-            nameOfTypeFood.heightAnchor.constraint(equalToConstant: 100),
+            nameOfTypeFood.topAnchor.constraint(equalTo: topAnchor),
+            nameOfTypeFood.heightAnchor.constraint(equalToConstant: 60),
             nameOfTypeFood.widthAnchor.constraint(equalToConstant: frame.width)
         ])
         
+        NSLayoutConstraint.activate([
+            backGroungImageCell.centerXAnchor.constraint(equalTo: centerXAnchor),
+            backGroungImageCell.centerYAnchor.constraint(equalTo: centerYAnchor),
+        
+        ])
+        
+        
+        
     }
     
-    func configureCollectionCell(model: String){
+    func configureCollectionCell(model: String, image: String){
         nameOfTypeFood.text = model
+        backGroungImageCell.image = UIImage(named: image)
     }
     
 }
