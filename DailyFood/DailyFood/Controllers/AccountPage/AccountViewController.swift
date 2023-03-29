@@ -13,7 +13,7 @@ class AccountViewController: UIViewController{
     let imageClientImage = UIImageView()
     let tableView = UITableView()
     let identifier = "MyCell"
-    let arrayOfType = ["Мої закази","Мої дані","Мої бонуси","Адреса для доставки", "Тех. підтримка",]
+    let arrayOfType = ["Мої закази","Мої дані","Мої бонуси","Адреса доставки", "Технічна підтримка",]
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -84,7 +84,29 @@ class AccountViewController: UIViewController{
 extension AccountViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(numberOfSections(in: tableView))
+        
+        switch indexPath.item {
+        case 0:
+            navigationController?.pushViewController(OrdersPageViewController(), animated: false)
+            
+        case 1:
+            navigationController?.pushViewController(DataPageViewController(), animated: false)
+            
+        case 2:
+            navigationController?.pushViewController(BonusPageViewController(), animated: false)
+            
+                        
+        case 3:
+            navigationController?.pushViewController(DeliveryPageViewController(), animated: false)
+            
+                        
+        case 4:
+            navigationController?.pushViewController(TechHelpPageViewController(), animated: false)
+            
+            
+        default: break
+        }
+            
     }
     
 }
@@ -109,6 +131,9 @@ extension AccountViewController: UITableViewDataSource{
         nameOfType.text = arrayOfType[indexPath.row]
         nameOfType.font = UIFont(name: "Inter-Regular", size: 17)
         cell.backgroundColor = .lightGray
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .systemYellow
+        cell.selectedBackgroundView = backgroundView
         
         nameOfType.tag = indexPath.row
         cell.contentView.addSubview(nameOfType)

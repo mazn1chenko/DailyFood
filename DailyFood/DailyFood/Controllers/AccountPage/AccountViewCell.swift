@@ -19,6 +19,7 @@ class AccountViewCell: UITableViewCell {
         
         setup()
         layout()
+        selectedBackgroundView?.backgroundColor = .lightGray
     }
     
     required init?(coder: NSCoder) {
@@ -33,9 +34,9 @@ class AccountViewCell: UITableViewCell {
         addSubview(nameOfType)
         
         NSLayoutConstraint.activate([
-            nameOfType.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 70),
             nameOfType.centerYAnchor.constraint(equalTo: centerYAnchor),
-            nameOfType.heightAnchor.constraint(equalToConstant: 25),
+            nameOfType.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 70),
+            nameOfType.heightAnchor.constraint(equalToConstant: 65),
             nameOfType.widthAnchor.constraint(equalToConstant: 150)
         ])
     }

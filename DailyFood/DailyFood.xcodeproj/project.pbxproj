@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7113AE5029D4720600C12957 /* OrdersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113AE4F29D4720600C12957 /* OrdersPageViewController.swift */; };
+		7113AE5229D4721D00C12957 /* DataPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113AE5129D4721D00C12957 /* DataPageViewController.swift */; };
+		7113AE5429D4722700C12957 /* BonusPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113AE5329D4722700C12957 /* BonusPageViewController.swift */; };
+		7113AE5729D4724000C12957 /* DeliveryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113AE5629D4724000C12957 /* DeliveryPageViewController.swift */; };
+		7113AE5A29D4754600C12957 /* TechHelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113AE5929D4754600C12957 /* TechHelpPageViewController.swift */; };
 		7125C5E229C363D000B85429 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E129C363D000B85429 /* Resources.swift */; };
 		7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E329C36F1E00B85429 /* MainViewController.swift */; };
 		7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E529C36F5500B85429 /* AccountViewController.swift */; };
@@ -26,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7113AE4F29D4720600C12957 /* OrdersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPageViewController.swift; sourceTree = "<group>"; };
+		7113AE5129D4721D00C12957 /* DataPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPageViewController.swift; sourceTree = "<group>"; };
+		7113AE5329D4722700C12957 /* BonusPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusPageViewController.swift; sourceTree = "<group>"; };
+		7113AE5629D4724000C12957 /* DeliveryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPageViewController.swift; sourceTree = "<group>"; };
+		7113AE5929D4754600C12957 /* TechHelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechHelpPageViewController.swift; sourceTree = "<group>"; };
 		7125C5E129C363D000B85429 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		7125C5E329C36F1E00B85429 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7125C5E529C36F5500B85429 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +96,46 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		7113AE4B29D4714400C12957 /* OrdersPage */ = {
+			isa = PBXGroup;
+			children = (
+				7113AE4F29D4720600C12957 /* OrdersPageViewController.swift */,
+			);
+			path = OrdersPage;
+			sourceTree = "<group>";
+		};
+		7113AE4C29D4717500C12957 /* DataPage */ = {
+			isa = PBXGroup;
+			children = (
+				7113AE5129D4721D00C12957 /* DataPageViewController.swift */,
+			);
+			path = DataPage;
+			sourceTree = "<group>";
+		};
+		7113AE4D29D471A300C12957 /* BonusPage */ = {
+			isa = PBXGroup;
+			children = (
+				7113AE5329D4722700C12957 /* BonusPageViewController.swift */,
+			);
+			path = BonusPage;
+			sourceTree = "<group>";
+		};
+		7113AE4E29D471B200C12957 /* DeliveryPage */ = {
+			isa = PBXGroup;
+			children = (
+				7113AE5629D4724000C12957 /* DeliveryPageViewController.swift */,
+			);
+			path = DeliveryPage;
+			sourceTree = "<group>";
+		};
+		7113AE5829D4752B00C12957 /* TechHelpPage */ = {
+			isa = PBXGroup;
+			children = (
+				7113AE5929D4754600C12957 /* TechHelpPageViewController.swift */,
+			);
+			path = TechHelpPage;
+			sourceTree = "<group>";
+		};
 		7125C5DF29C363AA00B85429 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +176,11 @@
 			children = (
 				7125C5E529C36F5500B85429 /* AccountViewController.swift */,
 				719DEEC229C387AD00264668 /* AccountViewCell.swift */,
+				7113AE4B29D4714400C12957 /* OrdersPage */,
+				7113AE4C29D4717500C12957 /* DataPage */,
+				7113AE4D29D471A300C12957 /* BonusPage */,
+				7113AE4E29D471B200C12957 /* DeliveryPage */,
+				7113AE5829D4752B00C12957 /* TechHelpPage */,
 			);
 			path = AccountPage;
 			sourceTree = "<group>";
@@ -269,13 +324,18 @@
 				7125C5E229C363D000B85429 /* Resources.swift in Sources */,
 				719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */,
 				7186BC4F29C342D600DCB921 /* AppDelegate.swift in Sources */,
+				7113AE5429D4722700C12957 /* BonusPageViewController.swift in Sources */,
 				7160BE3B29C9E36F00090303 /* TypeOfFoodCell.swift in Sources */,
 				7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */,
 				7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */,
 				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
 				71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */,
 				7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */,
+				7113AE5A29D4754600C12957 /* TechHelpPageViewController.swift in Sources */,
+				7113AE5029D4720600C12957 /* OrdersPageViewController.swift in Sources */,
+				7113AE5229D4721D00C12957 /* DataPageViewController.swift in Sources */,
 				7160BE3629C9DFFE00090303 /* TypeOfFoodSelected.swift in Sources */,
+				7113AE5729D4724000C12957 /* DeliveryPageViewController.swift in Sources */,
 				719DEEC029C3757700264668 /* NavBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8U5JRPA4B7;
@@ -427,8 +488,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = PipsSolution.DailyFood;
+				PRODUCT_BUNDLE_IDENTIFIER = PipsSolution;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -443,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8U5JRPA4B7;
@@ -457,8 +520,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = PipsSolution.DailyFood;
+				PRODUCT_BUNDLE_IDENTIFIER = PipsSolution;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
