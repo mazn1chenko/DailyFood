@@ -28,6 +28,7 @@
 		719DEEC029C3757700264668 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEBF29C3757700264668 /* NavBarController.swift */; };
 		719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEC229C387AD00264668 /* AccountViewCell.swift */; };
 		71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB59BD29CC8D440024356E /* ApiManager.swift */; };
+		71E8086029D88B1A002112C2 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		719DEEBF29C3757700264668 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		719DEEC229C387AD00264668 /* AccountViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewCell.swift; sourceTree = "<group>"; };
 		71DB59BD29CC8D440024356E /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				7106D70C29C343CF001F754E /* Application */,
 				7125C5DF29C363AA00B85429 /* Helpers */,
 				7106D70D29C343DA001F754E /* Controllers */,
+				71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */,
 				719DEEC129C3773700264668 /* Base */,
 				7106D70B29C343B6001F754E /* SupportingFiles */,
 				7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */,
@@ -333,6 +336,7 @@
 				7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */,
 				7113AE5A29D4754600C12957 /* TechHelpPageViewController.swift in Sources */,
 				7113AE5029D4720600C12957 /* OrdersPageViewController.swift in Sources */,
+				71E8086029D88B1A002112C2 /* LaunchScreenView.swift in Sources */,
 				7113AE5229D4721D00C12957 /* DataPageViewController.swift in Sources */,
 				7160BE3629C9DFFE00090303 /* TypeOfFoodSelected.swift in Sources */,
 				7113AE5729D4724000C12957 /* DeliveryPageViewController.swift in Sources */,

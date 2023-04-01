@@ -28,6 +28,8 @@ class MainViewController: UIViewController{
         view.backgroundColor = .lightGray
         title = "DailyFood"
         
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
         navigationItem.searchController = searchBar
         
         setup()
@@ -38,7 +40,7 @@ class MainViewController: UIViewController{
     }
     
     func setup() {
-      
+              
         layoutFLow.scrollDirection = .vertical
         layoutFLow.minimumLineSpacing = 1
         layoutFLow.minimumInteritemSpacing = 1
