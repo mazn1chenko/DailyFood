@@ -29,13 +29,14 @@ class TabBarController: UITabBarController {
         tabBar.backgroundColor = .lightGray
         tabBar.layer.borderWidth = 0.2
         
-        
+        let launchController = LaunchScreenView()
         let mainController = MainViewController()
         let accountController = AccountViewController()
-        let typeOfFoodSelected = TypeOfFoodSelected()
+        //let typeOfFoodSelected = TypeOfFoodSelected()
         
         let mainNavigation = UINavigationController(rootViewController: mainController)
         let accountNavigation = UINavigationController(rootViewController: accountController)
+        let launchNavigation = UINavigationController(rootViewController: launchController)
         
         
         mainNavigation.tabBarItem = UITabBarItem(title: "DailyFood",

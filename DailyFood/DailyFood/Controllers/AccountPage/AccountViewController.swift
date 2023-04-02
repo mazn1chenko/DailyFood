@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class AccountViewController: UIViewController{
     
@@ -13,7 +14,7 @@ class AccountViewController: UIViewController{
     let imageClientImage = UIImageView()
     let tableView = UITableView()
     let identifier = "MyCell"
-    let arrayOfType = ["Мої закази","Мої дані","Мої бонуси","Адреса доставки", "Технічна підтримка",]
+    let arrayOfType = ["Мої закази","Мої дані","Мої бонуси","Адреса доставки", "Технічна підтримка","Увiйти в аккаунт"]
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -102,6 +103,25 @@ extension AccountViewController: UITableViewDelegate{
                         
         case 4:
             navigationController?.pushViewController(TechHelpPageViewController(), animated: false)
+            
+        case 5:
+            GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+                guard error == nil else { return }
+
+                // If sign in succeeded, display the app's main content View.
+                guard let signInResult = signInResult else { return }
+
+                    let user = signInResult.user
+
+                    let emailAddress = user.profile?.email
+
+                    let fullName = user.profile?.name
+                    let givenName = user.profile?.givenName
+                    let familyName = user.profile?.familyName
+
+                    let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+                    print((user, emailAddress!, fullName!))
+              }
             
             
         default: break
