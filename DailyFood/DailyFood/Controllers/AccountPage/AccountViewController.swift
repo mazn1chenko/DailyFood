@@ -10,7 +10,7 @@ import GoogleSignIn
 
 class AccountViewController: UIViewController{
     
-    let nameClientLabel = UILabel()
+    var nameClientLabel = UILabel()
     let imageClientImage = UIImageView()
     let tableView = UITableView()
     let identifier = "MyCell"
@@ -107,21 +107,30 @@ extension AccountViewController: UITableViewDelegate{
         case 5:
             GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
                 guard error == nil else { return }
-
+                
                 // If sign in succeeded, display the app's main content View.
                 guard let signInResult = signInResult else { return }
-
-                    let user = signInResult.user
-
-                    let emailAddress = user.profile?.email
-
-                    let fullName = user.profile?.name
-                    let givenName = user.profile?.givenName
-                    let familyName = user.profile?.familyName
-
-                    let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-                    print((user, emailAddress!, fullName!))
-              }
+                
+                let user = signInResult.user
+                
+                
+                
+                //let emailAddress = user.profile?.email
+                
+                let fullName = user.profile?.name
+                
+                if fullName == fullName {
+                    self.nameClientLabel.text = "\(String(describing: fullName!))"
+                    
+                } else {
+                    self.nameClientLabel.text = "ІМ'Я ТА ПРІЗВИЩЕ"
+                }
+//                let givenName = user.profile?.givenName
+//                let familyName = user.profile?.familyName
+//
+//                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+                
+            }
             
             
         default: break

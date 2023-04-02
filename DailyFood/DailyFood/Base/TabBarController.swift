@@ -28,6 +28,8 @@ class TabBarController: UITabBarController {
         tabBar.barTintColor = .lightGray
         tabBar.backgroundColor = .lightGray
         tabBar.layer.borderWidth = 0.2
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
         
         let launchController = LaunchScreenView()
         let mainController = MainViewController()

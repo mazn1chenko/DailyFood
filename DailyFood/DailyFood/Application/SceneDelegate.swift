@@ -20,9 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let controller = UINavigationController(rootViewController: MainViewController())
         //let tabBarController = TabBarController()
         //window.rootViewController = tabBarController //last wich yousing before trying to create launchscreen
-        //let navControllerLaunch = UINavigationController(rootViewController: LaunchScreenView())
+        let navControllerLaunch = UINavigationController(rootViewController: LaunchScreenView())
         
-        window.rootViewController = TabBarController()
+        window.rootViewController = navControllerLaunch
         
         window.makeKeyAndVisible()
         self.window = window

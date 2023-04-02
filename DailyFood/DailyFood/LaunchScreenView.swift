@@ -17,6 +17,7 @@ class LaunchScreenView: UIViewController {
         view.backgroundColor = .lightGray
         
         self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationController?.isNavigationBarHidden = true
 
         setup()
         layout()
@@ -49,8 +50,7 @@ class LaunchScreenView: UIViewController {
     
     func pushMainWindow(){
         
-        
-        navigationController?.pushViewController(MainViewController(), animated: true)
+        navigationController?.pushViewController(TabBarController(), animated: true)
         
     }
 
