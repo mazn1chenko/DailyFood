@@ -38,7 +38,7 @@ class TabBarController: UITabBarController {
         
         let mainNavigation = UINavigationController(rootViewController: mainController)
         let accountNavigation = UINavigationController(rootViewController: accountController)
-        let launchNavigation = UINavigationController(rootViewController: launchController)
+      //  let launchNavigation = UINavigationController(rootViewController: launchController)
         
         
         mainNavigation.tabBarItem = UITabBarItem(title: "DailyFood",

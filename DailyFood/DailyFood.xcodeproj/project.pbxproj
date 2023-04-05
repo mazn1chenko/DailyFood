@@ -20,6 +20,7 @@
 		7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155CB1329C7326300A55F7E /* MenuCollectionViewCell.swift */; };
 		7160BE3629C9DFFE00090303 /* TypeOfFoodSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160BE3529C9DFFE00090303 /* TypeOfFoodSelected.swift */; };
 		7160BE3B29C9E36F00090303 /* TypeOfFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160BE3A29C9E36F00090303 /* TypeOfFoodCell.swift */; };
+		7166F6FF29DD895C00AFD81E /* OrdersPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7166F6FE29DD895C00AFD81E /* OrdersPageCollectionViewCell.swift */; };
 		7186BC4F29C342D600DCB921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC4E29C342D600DCB921 /* AppDelegate.swift */; };
 		7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5029C342D600DCB921 /* SceneDelegate.swift */; };
 		7186BC5329C342D600DCB921 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186BC5229C342D600DCB921 /* TabBarController.swift */; };
@@ -45,6 +46,7 @@
 		7155CB1329C7326300A55F7E /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		7160BE3529C9DFFE00090303 /* TypeOfFoodSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfFoodSelected.swift; sourceTree = "<group>"; };
 		7160BE3A29C9E36F00090303 /* TypeOfFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfFoodCell.swift; sourceTree = "<group>"; };
+		7166F6FE29DD895C00AFD81E /* OrdersPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		7186BC4B29C342D600DCB921 /* DailyFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7186BC4E29C342D600DCB921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7186BC5029C342D600DCB921 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				7113AE4F29D4720600C12957 /* OrdersPageViewController.swift */,
+				7166F6FE29DD895C00AFD81E /* OrdersPageCollectionViewCell.swift */,
 			);
 			path = OrdersPage;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */,
 				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
 				71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */,
+				7166F6FF29DD895C00AFD81E /* OrdersPageCollectionViewCell.swift in Sources */,
 				7186BC5129C342D600DCB921 /* SceneDelegate.swift in Sources */,
 				7113AE5A29D4754600C12957 /* TechHelpPageViewController.swift in Sources */,
 				7113AE5029D4720600C12957 /* OrdersPageViewController.swift in Sources */,

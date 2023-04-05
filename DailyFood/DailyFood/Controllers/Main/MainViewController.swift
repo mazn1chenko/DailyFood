@@ -101,6 +101,7 @@ extension MainViewController: UICollectionViewDataSource {
         
         cell!.configureCollectionCell(model: menuFood[indexPath.row], image: menuFoodImage[indexPath.row])
         return cell!
+        
     }
     
     
