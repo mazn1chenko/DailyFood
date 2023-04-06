@@ -24,6 +24,7 @@ class BonusPageViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Мої бонуси"
+        
         view.backgroundColor = .lightGray
         
         setup()

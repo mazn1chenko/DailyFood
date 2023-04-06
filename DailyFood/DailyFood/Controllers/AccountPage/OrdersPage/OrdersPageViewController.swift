@@ -13,14 +13,19 @@ class OrdersPageViewController: UIViewController {
     
     let layoutFlow = UICollectionViewFlowLayout()
 
-    let countOfOrders = ["hotdog"]
+    let countOfOrders = ["hotdog", "hotdog"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Мої закази"
 
-        view.backgroundColor = .lightGray
+        view.backgroundColor = backgroundOfAllApps
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+            navigationController?.navigationBar.tintColor = .black
+        
         
         setup()
         layout()
@@ -34,7 +39,7 @@ class OrdersPageViewController: UIViewController {
         layoutFlow.minimumLineSpacing = 1
         layoutFlow.minimumInteritemSpacing = 1
         layoutFlow.itemSize = CGSize(width: view.frame.size.width,
-                                     height: view.frame.size.height / 6)
+                                     height: view.frame.size.height / 5.25)
         
         ordersCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutFlow)
         
@@ -43,7 +48,7 @@ class OrdersPageViewController: UIViewController {
         
         ordersCollectionView.dataSource = self
         ordersCollectionView.delegate = self
-        ordersCollectionView.backgroundColor = .lightGray
+        ordersCollectionView.backgroundColor = backgroundOfAllApps
         ordersCollectionView.translatesAutoresizingMaskIntoConstraints = false
         ordersCollectionView.register(OrdersPageCollectionViewCell.self, forCellWithReuseIdentifier: OrdersPageCollectionViewCell.reuseID)
         

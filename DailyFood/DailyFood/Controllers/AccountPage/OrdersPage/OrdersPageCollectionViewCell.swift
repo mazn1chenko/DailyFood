@@ -13,10 +13,24 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     
     let imageOfOrdersImage = UIImageView()
     
+    let numberOfOrdersLabel = UILabel()
+    
+    let dateOrdersLabel = UILabel()
+    
+    let sumOfCurrentOrdersLabel = UILabel()
+    
+    let sumOfOrdersCount = 128
+    
+    let numberOfOrdersCount = 12
+    
+    let statusOfCurrentOrders = UILabel()
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
         contentView.backgroundColor = .white
+        
+        
         
         setup()
         layout()
@@ -29,18 +43,81 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     func setup() {
         
         imageOfOrdersImage.translatesAutoresizingMaskIntoConstraints = false
+        imageOfOrdersImage.backgroundColor = backgroundColorOfIconItem
         
+        sumOfCurrentOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
+        sumOfCurrentOrdersLabel.text = "Сума \(sumOfOrdersCount) ₴"
+        sumOfCurrentOrdersLabel.textColor = .black
+        sumOfCurrentOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+
+        
+        
+        numberOfOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
+        numberOfOrdersLabel.text = "№ \(numberOfOrdersCount)"
+        numberOfOrdersLabel.textColor = .black
+        numberOfOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+                      
+        dateOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateOrdersLabel.text = "5 квітня 2023"
+        dateOrdersLabel.textAlignment = .right
+        dateOrdersLabel.textColor = .black
+        dateOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        dateOrdersLabel.textColor = .gray
+        
+        statusOfCurrentOrders.translatesAutoresizingMaskIntoConstraints = false
+        statusOfCurrentOrders.text = "Замовлення отримано"
+        statusOfCurrentOrders.textColor = .systemGreen
+        statusOfCurrentOrders.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        statusOfCurrentOrders.textAlignment = .right
+
+
         
     }
     
     func layout() {
         addSubview(imageOfOrdersImage)
+        addSubview(numberOfOrdersLabel)
+        addSubview(sumOfCurrentOrdersLabel)
+        addSubview(dateOrdersLabel)
+        addSubview(statusOfCurrentOrders)
         
         NSLayoutConstraint.activate([
-            imageOfOrdersImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageOfOrdersImage.topAnchor.constraint(equalTo: topAnchor),
-            imageOfOrdersImage.heightAnchor.constraint(equalToConstant: 60),
-            imageOfOrdersImage.widthAnchor.constraint(equalToConstant: frame.width)
+            
+            imageOfOrdersImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageOfOrdersImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.5),
+            imageOfOrdersImage.heightAnchor.constraint(equalToConstant: bounds.height / 2.5),
+            imageOfOrdersImage.widthAnchor.constraint(equalToConstant: bounds.height / 2.5)
+
+        ])
+        
+        NSLayoutConstraint.activate([
+            numberOfOrdersLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.5),
+            numberOfOrdersLabel.bottomAnchor.constraint(equalTo: imageOfOrdersImage.topAnchor, constant: -10),
+            numberOfOrdersLabel.heightAnchor.constraint(equalToConstant: 30),
+            numberOfOrdersLabel.widthAnchor.constraint(equalToConstant: 200)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dateOrdersLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            dateOrdersLabel.bottomAnchor.constraint(equalTo: imageOfOrdersImage.topAnchor, constant: -10),
+            dateOrdersLabel.heightAnchor.constraint(equalToConstant: 30),
+            dateOrdersLabel.widthAnchor.constraint(equalToConstant: 200)
+        ])
+        
+        NSLayoutConstraint.activate([
+            sumOfCurrentOrdersLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.5),
+            sumOfCurrentOrdersLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7.5),
+            sumOfCurrentOrdersLabel.heightAnchor.constraint(equalToConstant: 30),
+            sumOfCurrentOrdersLabel.widthAnchor.constraint(equalToConstant: 200)
+        ])
+        
+        NSLayoutConstraint.activate([
+            
+            statusOfCurrentOrders.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            statusOfCurrentOrders.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7.5),
+            statusOfCurrentOrders.heightAnchor.constraint(equalToConstant: 30),
+            statusOfCurrentOrders.widthAnchor.constraint(equalToConstant: 200)
+            
         ])
         
     }
