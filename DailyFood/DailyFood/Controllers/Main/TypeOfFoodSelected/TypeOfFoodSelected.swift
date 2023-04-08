@@ -26,6 +26,28 @@ class TypeOfFoodSelected: UIViewController {
         
     }
     
+    
+    var menuFoodModel: [ModelFood] = {
+        var hotdog = ModelFood()
+        hotdog.nameFood = "Хот-дог"
+        hotdog.priceOfFood = "24"
+        hotdog.imageFood = "hotdog"
+        
+         var borsh = ModelFood()
+        borsh.nameFood = "Борщ"
+        borsh.priceOfFood = "21"
+        borsh.imageFood = "borsh"
+        
+         var pancake = ModelFood()
+        pancake.nameFood = "Панкейки"
+        pancake.priceOfFood = "30"
+        pancake.imageFood = "pancake"
+        
+        
+        return [hotdog, pancake, borsh]
+        
+    }()
+    
     func setup() {
         
         layoutFLow.scrollDirection = .vertical
@@ -75,12 +97,14 @@ extension TypeOfFoodSelected: UICollectionViewDelegate{
 
 extension TypeOfFoodSelected: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return menuFoodModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeOfFoodCell.reuseID, for: indexPath)
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeOfFoodCell.reuseID, for: indexPath) as? TypeOfFoodCell
+        
+        cell!.configureCollectionCell(model: menuFoodModel[indexPath.row])
+        return cell!
     }
     
 }

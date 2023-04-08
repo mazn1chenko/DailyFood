@@ -107,4 +107,11 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         
     }
+    
+    func configureCollectionCell(model: ModelFood){
+        priceOfFoodLabel.text = model.priceOfFood
+        imageOfFoodImage.image = UIImage(named: model.imageFood!)
+        namefOfFoodLabel.text = model.nameFood
+        
+    }
 }
