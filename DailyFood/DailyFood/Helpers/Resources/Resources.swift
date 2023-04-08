@@ -12,6 +12,7 @@ enum Resources {
     enum Images {
         static var account = UIImage(named: "account")
         static var main = UIImage(named: "main")
+        static var basket = UIImage(named: "basket")
     }
     
     

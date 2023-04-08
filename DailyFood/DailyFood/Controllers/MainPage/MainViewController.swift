@@ -9,8 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController{
     
-    let searchBar = UISearchController()
-        
+    let searchBarController = UISearchController()
+            
     private var collectionView: UICollectionView?
     
     let layoutFLow = UICollectionViewFlowLayout()
@@ -25,16 +25,15 @@ class MainViewController: UIViewController{
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        view.backgroundColor = .lightGray
         title = "DailyFood"
+        
+        view.backgroundColor = backgroundOfAllApps
         
         self.navigationItem.setHidesBackButton(true, animated: false)
 
-        navigationItem.searchController = searchBar
-        
         setup()
         layout()
-        buttonsNavBar()
+        //searchBurSettings()
 
         
     }
@@ -44,8 +43,8 @@ class MainViewController: UIViewController{
         layoutFLow.scrollDirection = .vertical
         layoutFLow.minimumLineSpacing = 1
         layoutFLow.minimumInteritemSpacing = 1
-        layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 4,
-                                 height: (view.frame.size.width / 2) - 4)
+        layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 8,
+                                 height: (view.frame.size.width / 2) - 8)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutFLow)
 
@@ -53,7 +52,7 @@ class MainViewController: UIViewController{
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = backgroundOfAllApps
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.reuseID)
 
@@ -74,19 +73,16 @@ class MainViewController: UIViewController{
     
     
     
-    func buttonsNavBar() {
+    func searchBurSettings() {
         
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Button", style: .done, target: self, action: #selector(buttonMenu(action:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "basket"), style: .done, target: self, action: #selector(buttonMenu(action:)))
         
-    }
-    @objc func buttonMenu(action: UIButton){
-        if action == action {
-            let basketVC = BasketViewController()
-            navigationController?.pushViewController(basketVC, animated: true)
-        }
-    }
+        navigationItem.searchController = searchBarController
+        
+        let searchBur = UISearchBar()
+        navigationController?.navigationItem.titleView = searchBur
+        
 
+    }
 }
 
 

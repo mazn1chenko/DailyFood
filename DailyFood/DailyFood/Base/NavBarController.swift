@@ -23,6 +23,8 @@ class NavBarController: UINavigationController {
         navigationBar.barTintColor = .lightGray
         navigationController?.navigationBar.backgroundColor = .lightGray
         
+        
+        
     }
 
     

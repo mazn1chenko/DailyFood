@@ -14,6 +14,8 @@ class DataPageViewController: UIViewController {
 
         title = "Мої дані"
         view.backgroundColor = .lightGray
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
     }
 

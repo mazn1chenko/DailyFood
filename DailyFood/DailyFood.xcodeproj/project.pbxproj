@@ -111,8 +111,8 @@
 		7106D70D29C343DA001F754E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7160BE3729C9E25D00090303 /* Main */,
-				7155CB1129C7264300A55F7E /* BasketViewController.swift */,
+				7160BE3729C9E25D00090303 /* MainPage */,
+				716CF62329E198060013E158 /* BasketPage */,
 				7160BE3929C9E29400090303 /* AccountPage */,
 			);
 			path = Controllers;
@@ -176,14 +176,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		7160BE3729C9E25D00090303 /* Main */ = {
+		7160BE3729C9E25D00090303 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
 				7125C5E329C36F1E00B85429 /* MainViewController.swift */,
 				7155CB1329C7326300A55F7E /* MenuCollectionViewCell.swift */,
 				7160BE3829C9E27100090303 /* TypeOfFoodSelected */,
 			);
-			path = Main;
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		7160BE3829C9E27100090303 /* TypeOfFoodSelected */ = {
@@ -215,6 +215,14 @@
 				716CF62129E180BB0013E158 /* TestingModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		716CF62329E198060013E158 /* BasketPage */ = {
+			isa = PBXGroup;
+			children = (
+				7155CB1129C7264300A55F7E /* BasketViewController.swift */,
+			);
+			path = BasketPage;
 			sourceTree = "<group>";
 		};
 		7186BC4229C342D500DCB921 = {

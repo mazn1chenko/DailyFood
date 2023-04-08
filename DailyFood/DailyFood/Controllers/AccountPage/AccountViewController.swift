@@ -22,6 +22,8 @@ class AccountViewController: UIViewController{
         view.backgroundColor = .lightGray
         title = "Мій аккаунт"
         
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
         setup()
         layout()
         

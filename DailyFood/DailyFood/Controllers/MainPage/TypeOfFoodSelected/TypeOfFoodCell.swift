@@ -22,7 +22,7 @@ class TypeOfFoodCell: UICollectionViewCell {
     override init(frame: CGRect){
         super.init(frame: frame)
         
-        backgroundColor = .blue
+        backgroundColor = backgroundColorOfIconItem
         layer.cornerRadius = 10
         layer.masksToBounds = true
 
@@ -109,7 +109,7 @@ class TypeOfFoodCell: UICollectionViewCell {
     }
     
     func configureCollectionCell(model: ModelFood){
-        priceOfFoodLabel.text = model.priceOfFood
+        priceOfFoodLabel.text = "\(model.priceOfFood ?? "NoPrice") ₴"
         imageOfFoodImage.image = UIImage(named: model.imageFood!)
         namefOfFoodLabel.text = model.nameFood
         

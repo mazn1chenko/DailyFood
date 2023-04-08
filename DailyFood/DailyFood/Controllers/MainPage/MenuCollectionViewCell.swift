@@ -22,7 +22,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         
-        contentView.backgroundColor = .systemYellow
+        contentView.backgroundColor = backgroundColorOfIconItem
         setup()
         layout()
     }

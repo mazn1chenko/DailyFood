@@ -10,7 +10,7 @@ import UIKit
 enum Tabs: Int {
     case account
     case main
-    case typeOfFood
+    case basket
 }
 
 class TabBarController: UITabBarController {
@@ -31,14 +31,13 @@ class TabBarController: UITabBarController {
         self.navigationItem.setHidesBackButton(true, animated: false)
 
         
-        let launchController = LaunchScreenView()
         let mainController = MainViewController()
         let accountController = AccountViewController()
-        //let typeOfFoodSelected = TypeOfFoodSelected()
+        let basketController = BasketViewController()
         
         let mainNavigation = UINavigationController(rootViewController: mainController)
         let accountNavigation = UINavigationController(rootViewController: accountController)
-      //  let launchNavigation = UINavigationController(rootViewController: launchController)
+        let basketNavigation = UINavigationController(rootViewController: basketController)
         
         
         mainNavigation.tabBarItem = UITabBarItem(title: "DailyFood",
@@ -48,9 +47,13 @@ class TabBarController: UITabBarController {
         accountNavigation.tabBarItem = UITabBarItem(title: "Аккаунт",
                                                     image: Resources.Images.account,
                                                     tag: Tabs.account.rawValue)
-
         
-        setViewControllers([mainNavigation, accountNavigation], animated: false)
+        basketNavigation.tabBarItem = UITabBarItem(title: "Корзина",
+                                                    image: Resources.Images.basket,
+                                                    tag: Tabs.basket.rawValue)
+        
+        
+        setViewControllers([mainNavigation, basketNavigation, accountNavigation], animated: false)
                 
     }
 }

@@ -29,6 +29,8 @@ class BonusPageViewController: UIViewController {
         
         setup()
         layout()
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
     }
     
