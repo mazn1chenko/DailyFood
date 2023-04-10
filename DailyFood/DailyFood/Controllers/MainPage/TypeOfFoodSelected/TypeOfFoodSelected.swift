@@ -23,7 +23,6 @@ class TypeOfFoodSelected: UIViewController {
         layout()
         settingsNavBar()
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
         
     }
@@ -146,17 +145,11 @@ class TypeOfFoodSelected: UIViewController {
     }
     
     func settingsNavBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "basket"), style: .done, target: self, action: #selector(buttonMenu(action:)))
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
         
+        navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
     }
-    @objc func buttonMenu(action: UIButton){
-        if action == action {
-            let basketVC = BasketViewController()
-            navigationController?.pushViewController(basketVC, animated: true)
-        }
-    }
-    
-    
+
 }
 
 extension TypeOfFoodSelected: UICollectionViewDelegate{

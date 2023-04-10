@@ -34,6 +34,10 @@ class MainViewController: UIViewController{
         setup()
         layout()
         //searchBurSettings()
+        
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
+        navigationItem.backBarButtonItem?.tintColor = .lightGray
 
         
     }
@@ -64,9 +68,10 @@ class MainViewController: UIViewController{
 
         NSLayoutConstraint.activate([
             collectionView!.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            collectionView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             collectionView!.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+
         ])
         
     }

@@ -22,10 +22,10 @@ class AccountViewController: UIViewController{
         view.backgroundColor = .lightGray
         title = "Мій аккаунт"
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
+
         setup()
         layout()
+        settingsNavBar()
         
     }
     
@@ -81,7 +81,11 @@ class AccountViewController: UIViewController{
         
     }
     
-    
+    func settingsNavBar() {
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
+        
+        navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
+    }
 }
 
 extension AccountViewController: UITableViewDelegate{

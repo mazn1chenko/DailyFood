@@ -40,11 +40,17 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         namefOfFoodLabel.translatesAutoresizingMaskIntoConstraints = false
         namefOfFoodLabel.text = "Сарделька в тИсти"
+        namefOfFoodLabel.numberOfLines = 0
+        namefOfFoodLabel.adjustsFontSizeToFitWidth = true
+        namefOfFoodLabel.sizeToFit()
         namefOfFoodLabel.textAlignment = .center
 
         
         priceOfFoodLabel.translatesAutoresizingMaskIntoConstraints = false
         priceOfFoodLabel.text = "20 ₴"
+        priceOfFoodLabel.numberOfLines = 0
+        priceOfFoodLabel.adjustsFontSizeToFitWidth = true
+        priceOfFoodLabel.sizeToFit()
         priceOfFoodLabel.textAlignment = .center
         
         imageOfFoodImage.translatesAutoresizingMaskIntoConstraints = false
@@ -52,9 +58,11 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         
         addItemToBasket.translatesAutoresizingMaskIntoConstraints = false
-        addItemToBasket.setTitle("Купити", for: .normal)
+        addItemToBasket.setTitle("В корзину", for: .normal)
         addItemToBasket.setTitleColor(.white, for: .normal)
-        addItemToBasket.backgroundColor = .red
+        addItemToBasket.backgroundColor = .orange
+        addItemToBasket.clipsToBounds = true
+        addItemToBasket.layer.cornerRadius = 4
         addItemToBasket.addTarget(self, action: #selector(addToBasket(action:)), for: .touchUpInside)
 
     }
@@ -78,7 +86,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             namefOfFoodLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             namefOfFoodLabel.topAnchor.constraint(equalTo: topAnchor),
-            namefOfFoodLabel.widthAnchor.constraint(equalToConstant: 250),
+            namefOfFoodLabel.widthAnchor.constraint(equalToConstant: 80),
             namefOfFoodLabel.heightAnchor.constraint(equalToConstant: 50)
             
         
@@ -86,10 +94,10 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            priceOfFoodLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            priceOfFoodLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            priceOfFoodLabel.widthAnchor.constraint(equalToConstant: 250),
-            priceOfFoodLabel.heightAnchor.constraint(equalToConstant: 50)
+            priceOfFoodLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
+            priceOfFoodLabel.trailingAnchor.constraint(equalTo: namefOfFoodLabel.leadingAnchor),
+            priceOfFoodLabel.widthAnchor.constraint(equalToConstant: 40),
+            priceOfFoodLabel.heightAnchor.constraint(equalToConstant: 20)
             
         ])
         
@@ -100,8 +108,8 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            addItemToBasket.trailingAnchor.constraint(equalTo: trailingAnchor),
-            addItemToBasket.bottomAnchor.constraint(equalTo: bottomAnchor)
+            addItemToBasket.centerXAnchor.constraint(equalTo: namefOfFoodLabel.trailingAnchor),
+            addItemToBasket.centerYAnchor.constraint(equalTo: priceOfFoodLabel.centerYAnchor)
             
         ])
         
