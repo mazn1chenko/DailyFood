@@ -20,7 +20,7 @@ class AccountViewController: UIViewController{
         super.viewDidLoad()
         
         view.backgroundColor = .lightGray
-        title = "Мій аккаунт"
+        title = "Аккаунт"
         
 
         setup()
@@ -44,6 +44,7 @@ class AccountViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .lightGray
+        
     }
     
     func layout(){

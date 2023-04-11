@@ -35,7 +35,7 @@ class OrdersPageViewController: UIViewController {
     func setup() {
         
         
-        layoutFlow.scrollDirection = .horizontal
+        layoutFlow.scrollDirection = .vertical
         layoutFlow.minimumLineSpacing = 1
         layoutFlow.minimumInteritemSpacing = 1
         layoutFlow.itemSize = CGSize(width: view.frame.size.width,

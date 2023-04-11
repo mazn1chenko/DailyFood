@@ -30,6 +30,8 @@
 		7186BC5E29C342D700DCB921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5C29C342D700DCB921 /* LaunchScreen.storyboard */; };
 		719DEEC029C3757700264668 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEBF29C3757700264668 /* NavBarController.swift */; };
 		719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEC229C387AD00264668 /* AccountViewCell.swift */; };
+		71C84A9B29E57D160076F8CA /* ManagerDataBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C84A9A29E57D160076F8CA /* ManagerDataBasket.swift */; };
+		71C84A9D29E5804E0076F8CA /* BasketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C84A9C29E5804E0076F8CA /* BasketCollectionViewCell.swift */; };
 		71D44E3E29DEE63200C83BF4 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D44E3D29DEE63200C83BF4 /* HexColor.swift */; };
 		71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB59BD29CC8D440024356E /* ApiManager.swift */; };
 		71E8086029D88B1A002112C2 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */; };
@@ -60,6 +62,8 @@
 		7186BC5F29C342D700DCB921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719DEEBF29C3757700264668 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		719DEEC229C387AD00264668 /* AccountViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewCell.swift; sourceTree = "<group>"; };
+		71C84A9A29E57D160076F8CA /* ManagerDataBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDataBasket.swift; sourceTree = "<group>"; };
+		71C84A9C29E5804E0076F8CA /* BasketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCollectionViewCell.swift; sourceTree = "<group>"; };
 		71D44E3D29DEE63200C83BF4 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		71DB59BD29CC8D440024356E /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				7155CB1129C7264300A55F7E /* BasketViewController.swift */,
+				71C84A9C29E5804E0076F8CA /* BasketCollectionViewCell.swift */,
+				71C84A9A29E57D160076F8CA /* ManagerDataBasket.swift */,
 			);
 			path = BasketPage;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7155CB1229C7264300A55F7E /* BasketViewController.swift in Sources */,
+				71C84A9B29E57D160076F8CA /* ManagerDataBasket.swift in Sources */,
 				7186BC5329C342D600DCB921 /* TabBarController.swift in Sources */,
 				7186BC5929C342D600DCB921 /* DailyFood.xcdatamodeld in Sources */,
 				7125C5E229C363D000B85429 /* Resources.swift in Sources */,
@@ -423,6 +430,7 @@
 				7113AE5429D4722700C12957 /* BonusPageViewController.swift in Sources */,
 				7160BE3B29C9E36F00090303 /* TypeOfFoodCell.swift in Sources */,
 				7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */,
+				71C84A9D29E5804E0076F8CA /* BasketCollectionViewCell.swift in Sources */,
 				7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */,
 				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
 				71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */,
@@ -504,7 +512,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -558,7 +566,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

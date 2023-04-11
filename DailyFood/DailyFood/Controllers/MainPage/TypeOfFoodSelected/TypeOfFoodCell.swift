@@ -64,6 +64,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         addItemToBasket.clipsToBounds = true
         addItemToBasket.layer.cornerRadius = 4
         addItemToBasket.addTarget(self, action: #selector(addToBasket(action:)), for: .touchUpInside)
+        
 
     }
     
@@ -71,7 +72,18 @@ class TypeOfFoodCell: UICollectionViewCell {
     @objc func addToBasket(action: UIButton) {
         
         if action == action {
-            print("item added to basket")
+            var model = ModelFood()
+            model.nameFood = namefOfFoodLabel.text ?? "NoNameInModel"
+            model.imageFood = "\(imageOfFoodImage)"
+            model.priceOfFood = priceOfFoodLabel.text ?? "NoPriceInModel"
+            
+            GlobalManagerArray.shared.addDataInArray(data: model)
+            
+            addItemToBasket.setTitle("В корзині", for: .normal)
+            addItemToBasket.backgroundColor = .green
+            addItemToBasket.setTitleColor(.gray, for: .normal)
+            print(model.imageFood)
+            
         }
     }
 
