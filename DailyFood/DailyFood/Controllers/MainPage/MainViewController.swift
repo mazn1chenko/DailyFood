@@ -19,8 +19,8 @@ class MainViewController: UIViewController{
     
     //private let identifier = "MyCell"
     
-    let menuFood = ["Перші блюда","Гарніри","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Унікальне :)",]
-    let menuFoodImage = ["firstPNG", "garnirPNG", "saladPNG", "snackPNG", "coctailsPNG", "dessertPNG", "breakfastPNG", "babyPNG", "cheffPNG", "lolPNG"]
+    let menuFood = ["Перші блюда","Гарніри","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Мʼясне",]
+    let menuFoodImage = ["firstPNG", "garnirPNG", "saladPNG", "snackPNG", "coctailsPNG", "dessertPNG", "breakfastPNG", "babyPNG", "cheffPNG", "meatsPNG"]
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -36,8 +36,12 @@ class MainViewController: UIViewController{
         //searchBurSettings()
         
         //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
-        navigationItem.backBarButtonItem?.tintColor = .lightGray
+        navigationItem.backBarButtonItem?.tintColor = .gray
+        //navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = backgroundOfAllApps
 
         
     }

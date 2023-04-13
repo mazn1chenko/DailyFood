@@ -19,6 +19,10 @@ class TypeOfFoodCell: UICollectionViewCell {
     
     let addItemToBasket = UIButton()
     
+    var typeFoodCellLabel = UILabel()
+    
+    var image = ""
+        
     override init(frame: CGRect){
         super.init(frame: frame)
         
@@ -74,7 +78,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         if action == action {
             var model = ModelFood()
             model.nameFood = namefOfFoodLabel.text ?? "NoNameInModel"
-            model.imageFood = "\(imageOfFoodImage)"
+            model.imageFood = image
             model.priceOfFood = priceOfFoodLabel.text ?? "NoPriceInModel"
             
             GlobalManagerArray.shared.addDataInArray(data: model)
@@ -82,8 +86,7 @@ class TypeOfFoodCell: UICollectionViewCell {
             addItemToBasket.setTitle("В корзині", for: .normal)
             addItemToBasket.backgroundColor = .green
             addItemToBasket.setTitleColor(.gray, for: .normal)
-            print(model.imageFood)
-            
+                        
         }
     }
 
@@ -129,9 +132,12 @@ class TypeOfFoodCell: UICollectionViewCell {
     }
     
     func configureCollectionCell(model: ModelFood){
+        
         priceOfFoodLabel.text = "\(model.priceOfFood ?? "NoPrice") ₴"
+        image = model.imageFood!
         imageOfFoodImage.image = UIImage(named: model.imageFood!)
         namefOfFoodLabel.text = model.nameFood
+        typeFoodCellLabel.text = model.typeFood?.rawValue
         
     }
 }

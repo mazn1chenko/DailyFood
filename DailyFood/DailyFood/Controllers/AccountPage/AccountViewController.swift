@@ -19,8 +19,9 @@ class AccountViewController: UIViewController{
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = backgroundOfAllApps
         title = "Аккаунт"
+        
         
 
         setup()
@@ -33,6 +34,7 @@ class AccountViewController: UIViewController{
         nameClientLabel.translatesAutoresizingMaskIntoConstraints = false
         nameClientLabel.textAlignment = .center
         nameClientLabel.text = "ІМ'Я ТА ПРІЗВИЩЕ"
+        nameClientLabel.textColor = .gray
         
         
         imageClientImage.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +45,8 @@ class AccountViewController: UIViewController{
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .lightGray
+        tableView.backgroundColor = backgroundOfAllApps
+        tableView.isScrollEnabled = false
         
     }
     
@@ -95,21 +98,21 @@ extension AccountViewController: UITableViewDelegate{
         
         switch indexPath.item {
         case 0:
-            navigationController?.pushViewController(OrdersPageViewController(), animated: false)
+            navigationController?.pushViewController(OrdersPageViewController(), animated: true)
             
         case 1:
-            navigationController?.pushViewController(DataPageViewController(), animated: false)
+            navigationController?.pushViewController(DataPageViewController(), animated: true)
             
         case 2:
-            navigationController?.pushViewController(BonusPageViewController(), animated: false)
+            navigationController?.pushViewController(BonusPageViewController(), animated: true)
             
                         
         case 3:
-            navigationController?.pushViewController(DeliveryPageViewController(), animated: false)
+            navigationController?.pushViewController(DeliveryPageViewController(), animated: true)
             
                         
         case 4:
-            navigationController?.pushViewController(TechHelpPageViewController(), animated: false)
+            navigationController?.pushViewController(TechHelpPageViewController(), animated: true)
             
         case 5:
             GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
@@ -166,11 +169,9 @@ extension AccountViewController: UITableViewDataSource{
         let nameOfType = UILabel(frame: CGRectMake(25.0, 32.5, 300.0, 25.0))
         nameOfType.text = arrayOfType[indexPath.row]
         nameOfType.font = UIFont(name: "Inter-Regular", size: 17)
-        cell.backgroundColor = .lightGray
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .systemYellow
-        cell.selectedBackgroundView = backgroundView
-        
+        nameOfType.textColor = .gray
+        cell.backgroundColor = backgroundOfAllApps
+        cell.selectionStyle = .none
         nameOfType.tag = indexPath.row
         cell.contentView.addSubview(nameOfType)
         

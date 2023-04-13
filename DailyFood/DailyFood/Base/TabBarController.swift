@@ -19,14 +19,18 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         settingsTabBar()
+        
 
     }
     
     func settingsTabBar(){
         
         tabBar.isTranslucent = false
-        tabBar.barTintColor = .lightGray
-        tabBar.backgroundColor = .lightGray
+        tabBar.barTintColor = backgroundOfAllApps
+        tabBar.backgroundColor = backgroundOfAllApps
+        tabBar.unselectedItemTintColor = .lightGray
+        tabBar.tintColor = .orange
+        tabBar.selectedItem?.badgeColor = .orange
         tabBar.layer.borderWidth = 0.2
         self.navigationItem.setHidesBackButton(true, animated: false)
         let attributes = [NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 14)]
@@ -63,5 +67,6 @@ class TabBarController: UITabBarController {
         setViewControllers([mainNavigation, basketNavigation, accountNavigation], animated: false)
                 
     }
+
 }
 

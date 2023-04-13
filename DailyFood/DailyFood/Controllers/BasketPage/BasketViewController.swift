@@ -16,10 +16,14 @@ class BasketViewController: UIViewController {
     var addedItem = [ModelFood]()
     
     var sumOfItemPrice = 0
- 
+    
+
+    
     private var basketCollectionView : UICollectionView?
     
     let layoutFlow = UICollectionViewFlowLayout()
+    
+    
 
     
     override func viewDidLoad() {
@@ -40,7 +44,11 @@ class BasketViewController: UIViewController {
     func setup() {
         
         labelWithButtonBuy.translatesAutoresizingMaskIntoConstraints = false
-        labelWithButtonBuy.text = "\(addedItem.count) товарів на суму = \(sumOfItemPrice)₴"
+        for i in addedItem{
+            sumOfItemPrice += Int(i.priceOfFood!)!
+        }
+        labelWithButtonBuy.text = "\(addedItem.count) товарів на суму  \(sumOfItemPrice)₴"
+        labelWithButtonBuy.textColor = .gray
         
         
         buyButton.translatesAutoresizingMaskIntoConstraints = false

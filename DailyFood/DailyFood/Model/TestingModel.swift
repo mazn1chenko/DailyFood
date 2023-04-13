@@ -7,12 +7,30 @@
 
 import Foundation
 
+
+
 struct ModelFood {
     
     var nameFood: String?
-    //var typeFood: String?
+    var typeFood: TypeOfFoodEnum?
     var imageFood: String?
     var priceOfFood: String?
+    
+    enum TypeOfFoodEnum : String{
+        
+        case first = "Перші блюда"
+        case garnir = "Гарніри"
+        case salad = "Салати"
+        case snack = "Холодні закуски"
+        case coctails = "Напої"
+        case desert = "Десерти"
+        case breakfast = "Сніданки"
+        case baby = "Дитяче"
+        case cheff = "Від Шефа"
+        case meats = "Мʼясне"
+    }
+    
+    
     
     
 }

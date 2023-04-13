@@ -5,7 +5,7 @@
 //  Created by m223 on 21.03.2023.
 //
 
-    import UIKit
+import UIKit
 
 class TypeOfFoodSelected: UIViewController {
     
@@ -14,6 +14,8 @@ class TypeOfFoodSelected: UIViewController {
     
     let layoutFLow = UICollectionViewFlowLayout()
     
+    var sortedArray = [ModelFood]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +24,7 @@ class TypeOfFoodSelected: UIViewController {
         setup()
         layout()
         settingsNavBar()
-        
+        funcSortedArray()
         
         
     }
@@ -31,76 +33,91 @@ class TypeOfFoodSelected: UIViewController {
     var menuFoodModel: [ModelFood] = {
         var hotdog = ModelFood()
         hotdog.nameFood = "Хот-дог"
+        hotdog.typeFood = .snack
         hotdog.priceOfFood = "24"
         hotdog.imageFood = "hotdog"
         
         var borsh = ModelFood()
         borsh.nameFood = "Борщ"
+        borsh.typeFood = .first
         borsh.priceOfFood = "21"
         borsh.imageFood = "borsh"
         
         var pancake = ModelFood()
         pancake.nameFood = "Панкейки"
+        pancake.typeFood = .desert
         pancake.priceOfFood = "30"
         pancake.imageFood = "pancake"
         
         var soup = ModelFood()
         soup.nameFood = "Суп"
+        soup.typeFood = .first
         soup.priceOfFood = "19"
         soup.imageFood = "soup"
         
         var chicken = ModelFood()
         chicken.nameFood = "Курка"
+        chicken.typeFood = .meats
         chicken.priceOfFood = "27"
         chicken.imageFood = "chicken"
         
         var pig = ModelFood()
         pig.nameFood = "Свинина"
+        pig.typeFood = .meats
         pig.priceOfFood = "36"
         pig.imageFood = "pig"
         
         var potato = ModelFood()
         potato.nameFood = "Картопля"
+        potato.typeFood = .garnir
         potato.priceOfFood = "20"
         potato.imageFood = "potato"
         
         var rice = ModelFood()
         rice.nameFood = "Рис"
+        rice.typeFood = .garnir
         rice.priceOfFood = "20"
         rice.imageFood = "rice"
         
         var fish = ModelFood()
         fish.nameFood = "Риба"
+        fish.typeFood = .meats
         fish.priceOfFood = "28"
         fish.imageFood = "fish"
         
         var coffee = ModelFood()
         coffee.nameFood = "Кофе"
+        coffee.typeFood = .coctails
         coffee.priceOfFood = "16"
         coffee.imageFood = "coffee"
         
         var tea = ModelFood()
         tea.nameFood = "Чай"
+        tea.typeFood = .coctails
         tea.priceOfFood = "12"
         tea.imageFood = "tea"
         
         var juice = ModelFood()
         juice.nameFood = "Сок"
+        juice.typeFood = .coctails
         juice.priceOfFood = "20"
         juice.imageFood = "juice"
         
         var cheesecake = ModelFood()
         cheesecake.nameFood = "Чизкейк"
+        cheesecake.typeFood = .desert
         cheesecake.priceOfFood = "15"
         cheesecake.imageFood = "cheesecake"
         
         var cezar = ModelFood()
-        cezar.nameFood = "Цезарь"
+        cezar.nameFood = "Цезар"
+        cezar.typeFood = .salad
         cezar.priceOfFood = "18"
         cezar.imageFood = "cezar"
         
         var summer = ModelFood()
         summer.nameFood = "Літній"
+        summer.typeFood = .salad
         summer.priceOfFood = "12"
         summer.imageFood = "summer"
         
@@ -108,6 +125,8 @@ class TypeOfFoodSelected: UIViewController {
         return [hotdog, pancake, borsh, soup, chicken, coffee, tea, cheesecake, summer, cezar, pig, fish, juice, rice, potato]
         
     }()
+    
+
     
     func setup() {
         
@@ -149,6 +168,15 @@ class TypeOfFoodSelected: UIViewController {
         
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
     }
+    
+    func funcSortedArray(){
+        for i in menuFoodModel{
+            if i.typeFood?.rawValue == navigationItem.title{
+                sortedArray.append(i)
+            }
+        }
+        print(sortedArray.count)
+    }
 
 }
 
@@ -156,15 +184,16 @@ extension TypeOfFoodSelected: UICollectionViewDelegate{
     
 }
 
+
+
 extension TypeOfFoodSelected: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuFoodModel.count
+        return sortedArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeOfFoodCell.reuseID, for: indexPath) as? TypeOfFoodCell
-        
-        cell!.configureCollectionCell(model: menuFoodModel[indexPath.row])
+        cell!.configureCollectionCell(model: sortedArray[indexPath.row])
         return cell!
     }
     

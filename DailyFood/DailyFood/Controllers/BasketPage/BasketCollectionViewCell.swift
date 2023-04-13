@@ -11,7 +11,7 @@ class BasketCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "BasketCustomCollectionViewCell"
     
-    let imageOfOrdersImage = UIImageView()
+    var imageOfOrdersImage = UIImageView()
     
     let nameItem = UILabel()
     
@@ -125,7 +125,6 @@ class BasketCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCollectionViewCell(model: ModelFood){
-        
         imageOfOrdersImage.image = UIImage(named: model.imageFood!)
         priceItem.text = model.priceOfFood
         nameItem.text = model.nameFood
