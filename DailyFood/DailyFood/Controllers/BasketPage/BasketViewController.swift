@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BasketViewController: UIViewController {
+class BasketViewController: UIViewController, UITabBarControllerDelegate {
     
     let labelWithButtonBuy = UILabel()
     
@@ -17,14 +17,11 @@ class BasketViewController: UIViewController {
     
     var sumOfItemPrice = 0
     
-
-    
     private var basketCollectionView : UICollectionView?
     
     let layoutFlow = UICollectionViewFlowLayout()
     
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +33,26 @@ class BasketViewController: UIViewController {
         setup()
         layout()
         settingsNavBar()
+
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.tabBarController?.delegate = self
         
         
-        
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 1 {
+            let add = GlobalManagerArray.shared.getArray()
+            addedItem = add
+            basketCollectionView?.reloadData()
+            print("selected")
+        }
     }
     
     func setup() {
@@ -122,19 +136,19 @@ class BasketViewController: UIViewController {
         
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
         
-        let reload = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadView(action:)))
+        //let reload = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadView(action:)))
         
-        navigationItem.rightBarButtonItems = [reload]
+        //navigationItem.rightBarButtonItems = [reload]
     }
     
-    @objc func reloadView(action: UIButton) {
-        
-        if action == action {
-            let add = GlobalManagerArray.shared.getArray()
-            addedItem = add
-            basketCollectionView?.reloadData()
-        }
-    }
+//    @objc func reloadView(action: UIButton) {
+//
+//        if action == action {
+//            let add = GlobalManagerArray.shared.getArray()
+//            addedItem = add
+//            basketCollectionView?.reloadData()
+//        }
+//    }
     
 }
 

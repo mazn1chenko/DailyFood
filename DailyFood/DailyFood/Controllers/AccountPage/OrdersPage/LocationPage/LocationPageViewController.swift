@@ -13,19 +13,23 @@ class LocationPageViewController: UIViewController {
     
     let maps = MKMapView()
     
-    var testArrayAnnotation = ["Kharkiv, PUTYLIVSKYI LANE 1", "Kharkiv, DANYLEVSKOHO STREET"]
+    var testArrayAnnotation = ["Харьков, Путиловский переулок", "Шатилова дача, Харьков"]
     
     var annotationArray = [MKPointAnnotation]()
-    //[0x281d311c0, 0x281d34980]
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        setup()
+        layout()
+        setupPlaceMark(address: "Харьков, Путиловский переулок")
+        setupPlaceMark(address: "Харків, Шатілова дача")
+        print("count: \(annotationArray.count)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+            self.createWay()
+        }
 
-            setupPlaceMarkStart()
-            setupPlaceMarkEnd()
-            createWay()
             
     }
     
@@ -49,60 +53,32 @@ class LocationPageViewController: UIViewController {
         
     }
     
-    func setupPlaceMarkStart() {
+    func setupPlaceMark(address: String) {
         
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString("Харків, Проспект Науки 1") { [self] (placemarks, error) in
-            if let _ = error {
+        geoCoder.geocodeAddressString(address) { [self] (placemarks, error) in
+            if let error = error {
+                print(error)
                 print("some wrong")
                 return
             }
             
-            guard let placemarks = placemarks else {return}
+            guard let placemarks = placemarks else { return }
             let placemark = placemarks.first
             
-            let annotationStart = MKPointAnnotation()
-            annotationStart.title = "Харьков, Путиловский переулок"
-            guard let placemarkLocationStart = placemark?.location else {return}
-            annotationStart.coordinate = placemarkLocationStart.coordinate
+            let annotation = MKPointAnnotation()
+            annotation.title = "\(address)"
+            guard let placemarkLocation = placemark?.location else {return}
+            annotation.coordinate = placemarkLocation.coordinate
             
-            annotationArray.append(annotationStart)
-            print("ETO KOT: \(annotationStart)")
+            annotationArray.append(annotation)
             
             maps.showAnnotations(annotationArray, animated: true)
-            
-            
+            print("functionSetupAnnotation")
         }
     }
-    
-    func setupPlaceMarkEnd() {
-        
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString("Харків, Проспект Науки 1") { [self] (placemarks, error) in
-            if let _ = error {
-                print("some wrong")
-                return
-            }
-            
-            guard let placemarks = placemarks else {return}
-            let placemark = placemarks.first
-            
-            let annotationEnd = MKPointAnnotation()
-            annotationEnd.title = "Харків, Шатілова дача"
-            guard let placemarkLocationEnd = placemark?.location else {return}
-            annotationEnd.coordinate = placemarkLocationEnd.coordinate
-            
-            annotationArray.append(annotationEnd)
-            print("ETO KOT: \(annotationEnd)")
 
-            
-            
-            maps.showAnnotations(annotationArray, animated: true)
-            
-            createWay()
-        }
-    }
-    
+
     private func createDirectionRequest(startCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
         
         let startLocation = MKPlacemark(coordinate: startCoordinate)
@@ -111,18 +87,18 @@ class LocationPageViewController: UIViewController {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: startLocation)
         request.destination = MKMapItem(placemark: destinationCoordinate)
-        request.transportType = .automobile
+        request.transportType = .walking
         request.requestsAlternateRoutes = true
         
-        let deraction = MKDirections(request: request)
-        deraction.calculate { (response, error) in
+        let diraction = MKDirections(request: request)
+        diraction.calculate { (response, error) in
             
-            if let _ = error {
+            if let error = error {
+                print(error)
                 print("SomeWrongInCreateAlternativeWay")
             }
             guard let response = response else {
-                
-                print("some wrong")
+                print("Маршрут недоступен")
                 return
             }
             
@@ -137,9 +113,12 @@ class LocationPageViewController: UIViewController {
     }
     
     func createWay() {
-        for index in 0...annotationArray.count {
-            createDirectionRequest(startCoordinate: annotationArray[index].coordinate, destinationCoordinate: annotationArray[index + 1].coordinate)
+        print("count \(annotationArray.count)")
+        for _ in 0...annotationArray.count {
+            createDirectionRequest(startCoordinate: annotationArray.first!.coordinate, destinationCoordinate: annotationArray.last!.coordinate)
         }
+        
+        maps.showAnnotations(annotationArray, animated: true)
     }
 
 }
@@ -148,8 +127,9 @@ extension LocationPageViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .red
+        renderer.strokeColor = .orange
         return renderer
     }
     
 }
+

@@ -13,15 +13,17 @@ enum Tabs: Int {
     case basket
 }
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settingsTabBar()
         
+        self.tabBarController?.delegate = self
 
     }
+
     
     func settingsTabBar(){
         

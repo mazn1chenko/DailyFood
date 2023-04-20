@@ -15,7 +15,7 @@ class MainViewController: UIViewController{
     
     let layoutFLow = UICollectionViewFlowLayout()
 
-    
+
     
     //private let identifier = "MyCell"
     
@@ -42,6 +42,7 @@ class MainViewController: UIViewController{
         navigationItem.backBarButtonItem?.tintColor = .gray
         //navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = backgroundOfAllApps
+        
 
         
     }
