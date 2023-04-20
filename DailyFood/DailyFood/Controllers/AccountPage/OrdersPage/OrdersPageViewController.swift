@@ -81,9 +81,19 @@ extension OrdersPageViewController: UICollectionViewDataSource {
         
         let cell = ordersCollectionView?.dequeueReusableCell(withReuseIdentifier: OrdersPageCollectionViewCell.reuseID, for: indexPath) as? OrdersPageCollectionViewCell
         
+        cell?.locationOrder.addTarget(self, action: #selector(location(action:)), for: .touchUpInside)
+        
         cell!.configureCollectionViewCell(image: countOfOrders[indexPath.row])
         
         return cell!
+    }
+    
+    @objc func location(action: UIButton ){
+        
+        if action == action {
+            
+            navigationController?.pushViewController(LocationPageViewController(), animated: true)
+        }
     }
     
     

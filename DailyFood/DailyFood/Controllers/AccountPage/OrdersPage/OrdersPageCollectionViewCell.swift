@@ -25,6 +25,8 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     
     let statusOfCurrentOrders = UILabel()
     
+    let locationOrder = UIButton()
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
@@ -65,14 +67,22 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         dateOrdersLabel.textColor = .gray
         
         statusOfCurrentOrders.translatesAutoresizingMaskIntoConstraints = false
-        statusOfCurrentOrders.text = "Замовлення отримано"
+        statusOfCurrentOrders.text = "Очікуйте прибуття курʼєру"
         statusOfCurrentOrders.textColor = .systemGreen
         statusOfCurrentOrders.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
         statusOfCurrentOrders.textAlignment = .right
-
+        
+        locationOrder.translatesAutoresizingMaskIntoConstraints = false
+        locationOrder.setTitle("Відстежити замовлення", for: .normal)
+        locationOrder.tintColor = .white
+        locationOrder.backgroundColor = .orange
+        locationOrder.titleLabel?.font = UIFont(name: "TimesNewRomanPSMT", size: 14)
+        locationOrder.titleLabel?.textAlignment = .right
 
         
+        
     }
+
     
     func layout() {
         addSubview(imageOfOrdersImage)
@@ -80,6 +90,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         addSubview(sumOfCurrentOrdersLabel)
         addSubview(dateOrdersLabel)
         addSubview(statusOfCurrentOrders)
+        addSubview(locationOrder)
         
         NSLayoutConstraint.activate([
             
@@ -117,6 +128,14 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             statusOfCurrentOrders.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7.5),
             statusOfCurrentOrders.heightAnchor.constraint(equalToConstant: 30),
             statusOfCurrentOrders.widthAnchor.constraint(equalToConstant: 200)
+            
+        ])
+        NSLayoutConstraint.activate([
+            
+            locationOrder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            locationOrder.bottomAnchor.constraint(equalTo: statusOfCurrentOrders.topAnchor),
+            locationOrder.heightAnchor.constraint(equalToConstant: 30),
+            locationOrder.widthAnchor.constraint(equalToConstant: 175)
             
         ])
         
