@@ -50,26 +50,26 @@ class BasketCollectionViewCell: UICollectionViewCell {
         priceItem.translatesAutoresizingMaskIntoConstraints = false
         priceItem.text = "Сума \(sumOfOrdersCount) ₴"
         priceItem.textColor = .black
-        priceItem.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        priceItem.font = UIFont(name: "American Typewriter", size: 16)
 
         
         
         nameItem.translatesAutoresizingMaskIntoConstraints = false
         nameItem.text = "№ \(numberOfOrdersCount)"
         nameItem.textColor = .black
-        nameItem.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        nameItem.font = UIFont(name: "American Typewriter", size: 16)
                       
         dateOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         dateOrdersLabel.text = "Х"
         dateOrdersLabel.textAlignment = .right
         dateOrdersLabel.textColor = .black
-        dateOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        dateOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
         dateOrdersLabel.textColor = .gray
         
         statusOfCurrentOrders.translatesAutoresizingMaskIntoConstraints = false
         statusOfCurrentOrders.text = "Знижка 5% "
         statusOfCurrentOrders.textColor = .systemGreen
-        statusOfCurrentOrders.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        statusOfCurrentOrders.font = UIFont(name: "American Typewriter", size: 16)
         statusOfCurrentOrders.textAlignment = .right
 
 

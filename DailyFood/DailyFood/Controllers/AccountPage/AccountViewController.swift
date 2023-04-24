@@ -34,6 +34,7 @@ class AccountViewController: UIViewController{
         nameClientLabel.translatesAutoresizingMaskIntoConstraints = false
         nameClientLabel.textAlignment = .center
         nameClientLabel.text = "ІМ'Я ТА ПРІЗВИЩЕ"
+        nameClientLabel.font = UIFont(name: "American Typewriter", size: 16)
         nameClientLabel.textColor = .gray
         
         
@@ -168,7 +169,7 @@ extension AccountViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let nameOfType = UILabel(frame: CGRectMake(25.0, 32.5, 300.0, 25.0))
         nameOfType.text = arrayOfType[indexPath.row]
-        nameOfType.font = UIFont(name: "Inter-Regular", size: 17)
+        nameOfType.font = UIFont(name: "American Typewriter", size: 17)
         nameOfType.textColor = .gray
         cell.backgroundColor = backgroundOfAllApps
         cell.selectionStyle = .none

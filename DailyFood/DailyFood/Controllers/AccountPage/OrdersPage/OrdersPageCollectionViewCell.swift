@@ -50,33 +50,33 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         sumOfCurrentOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         sumOfCurrentOrdersLabel.text = "Сума \(sumOfOrdersCount) ₴"
         sumOfCurrentOrdersLabel.textColor = .black
-        sumOfCurrentOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        sumOfCurrentOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
 
         
         
         numberOfOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         numberOfOrdersLabel.text = "№ \(numberOfOrdersCount)"
         numberOfOrdersLabel.textColor = .black
-        numberOfOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        numberOfOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
                       
         dateOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         dateOrdersLabel.text = "5 квітня 2023"
         dateOrdersLabel.textAlignment = .right
         dateOrdersLabel.textColor = .black
-        dateOrdersLabel.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        dateOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
         dateOrdersLabel.textColor = .gray
         
         statusOfCurrentOrders.translatesAutoresizingMaskIntoConstraints = false
         statusOfCurrentOrders.text = "Очікуйте прибуття курʼєру"
         statusOfCurrentOrders.textColor = .systemGreen
-        statusOfCurrentOrders.font = UIFont(name: "TimesNewRomanPSMT", size: 16)
+        statusOfCurrentOrders.font = UIFont(name: "American Typewriter", size: 16)
         statusOfCurrentOrders.textAlignment = .right
         
         locationOrder.translatesAutoresizingMaskIntoConstraints = false
         locationOrder.setTitle("Відстежити замовлення", for: .normal)
         locationOrder.tintColor = .white
         locationOrder.backgroundColor = .orange
-        locationOrder.titleLabel?.font = UIFont(name: "TimesNewRomanPSMT", size: 14)
+        locationOrder.titleLabel?.font = UIFont(name: "American Typewriter", size: 14)
         locationOrder.titleLabel?.textAlignment = .right
 
         
@@ -135,7 +135,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             locationOrder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             locationOrder.bottomAnchor.constraint(equalTo: statusOfCurrentOrders.topAnchor),
             locationOrder.heightAnchor.constraint(equalToConstant: 30),
-            locationOrder.widthAnchor.constraint(equalToConstant: 175)
+            locationOrder.widthAnchor.constraint(equalToConstant: 150)
             
         ])
         
