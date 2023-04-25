@@ -9,7 +9,7 @@ import UIKit
 
 class BasketViewController: UIViewController, UITabBarControllerDelegate {
     
-    let labelWithButtonBuy = UILabel()
+    var labelWithButtonBuy = UILabel()
     
     let buyButton = UIButton()
             
@@ -51,6 +51,9 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate {
             let add = GlobalManagerArray.shared.getArray()
             addedItem = add
             basketCollectionView?.reloadData()
+            let sumAndCount = GlobalManagerArray.shared.getSumOfItemPriceAndCount()
+            print(sumAndCount)
+            labelWithButtonBuy.text = "\(sumAndCount.1) товари на суму  \(sumAndCount.0)₴"
             print("selected")
         }
     }
@@ -58,10 +61,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate {
     func setup() {
         
         labelWithButtonBuy.translatesAutoresizingMaskIntoConstraints = false
-        for i in addedItem{
-            sumOfItemPrice += Int(i.priceOfFood!)!
-        }
-        labelWithButtonBuy.text = "\(addedItem.count) товарів на суму  \(sumOfItemPrice)₴"
+        labelWithButtonBuy.text = "0 товарів на суму 0 ₴"
         labelWithButtonBuy.textColor = .gray
         
         

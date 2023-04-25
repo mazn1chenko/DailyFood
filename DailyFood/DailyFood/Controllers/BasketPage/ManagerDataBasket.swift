@@ -13,6 +13,22 @@ class GlobalManagerArray {
     
     var globalArray = [ModelFood]()
     
+    func getSumOfItemPriceAndCount() -> (Int, Int) {
+        
+        var sum = 0
+        
+        var count = 0
+        
+        for i in globalArray {
+            var str = i.priceOfFood
+            str?.removeLast(2)
+            sum += Int(str!)!
+        }
+        count = globalArray.count
+        return (sum, count)
+        
+    }
+    
     func getArray() -> [ModelFood]{
         
         return globalArray
