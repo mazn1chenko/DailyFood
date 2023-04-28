@@ -52,9 +52,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate {
             addedItem = add
             basketCollectionView?.reloadData()
             let sumAndCount = GlobalManagerArray.shared.getSumOfItemPriceAndCount()
-            print(sumAndCount)
             labelWithButtonBuy.text = "\(sumAndCount.1) товари на суму  \(sumAndCount.0)₴"
-            print("selected")
         }
     }
     
@@ -97,7 +95,12 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate {
     @objc func buyItems(action: UIButton) {
         
         if action == action {
-            print("buyItems")
+            var dialogeMessage = UIAlertController(title: "Увага!", message: "Кнопка ще в розробці", preferredStyle: .alert)
+            let buttonOK = UIAlertAction(title: "Добре!", style: .default)
+            dialogeMessage.addAction(buttonOK)
+            self.present(dialogeMessage, animated: true)
+            
+
         }
     }
     
