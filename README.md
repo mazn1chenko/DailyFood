@@ -1,2 +1,2 @@
 # DailyFood
-Приложение магазина в котором можно посмотреть товары, сделать заказ, отслеживать заказ курьера, накопительная система(бонусов), вход в приложение с Гугл-аккаунта. Проект реализован не на полную, поскольку делается в команде с другими людьми и они не на полную выполняют свои задачи, которые тормошат процесс.
+A store application in which you can view goods, place an order, track the courier order, accumulative system (bonuses), enter the application from a Google account. The project was not fully implemented, because it is done in a team with other people and they do not fully fulfill their tasks, which hinder the process.
