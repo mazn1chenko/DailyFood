@@ -50,7 +50,7 @@ class LaunchScreenView: UIViewController {
     
     func pushMainWindow(){
         
-        navigationController?.pushViewController(TabBarController(), animated: true)
+        navigationController?.present(LogInViewController(), animated: true)
         
     }
 
