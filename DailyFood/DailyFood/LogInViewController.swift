@@ -16,6 +16,7 @@ class LogInViewController: UIViewController {
     var logInButton = UIButton(type: .system)
     var registrButton = UIButton(type: .system)
     var askAboutRegistrLabel = UILabel()
+    var imageDailyFood = UIImageView(image: UIImage(named: "launchScreen"))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,37 +29,42 @@ class LogInViewController: UIViewController {
     }
     
     func setup() {
+        imageDailyFood.translatesAutoresizingMaskIntoConstraints = false
+        
         logInLabel.translatesAutoresizingMaskIntoConstraints = false
         logInLabel.text = "Логін"
         logInLabel.textColor = .black
         logInLabel.textAlignment = .center
+        logInLabel.font = UIFont.systemFont(ofSize: 17)
         
         logInTextField.translatesAutoresizingMaskIntoConstraints = false
         logInTextField.backgroundColor = .lightGray
-        logInTextField.layer.cornerRadius = 8
+        logInTextField.layer.cornerRadius = 16
         
         
         passwordLabel.translatesAutoresizingMaskIntoConstraints = false
         passwordLabel.text = "Пароль"
         passwordLabel.textColor = .black
         passwordLabel.textAlignment = .center
+        passwordLabel.font = UIFont.systemFont(ofSize: 17)
+
         
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.backgroundColor = .lightGray
-        passwordTextField.layer.cornerRadius = 8
+        passwordTextField.layer.cornerRadius = 16
         
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         logInButton.setTitle("Увійти", for: .normal)
         logInButton.setTitleColor(.white, for: .normal)
         logInButton.backgroundColor = .lightGray
-        logInButton.layer.cornerRadius = 8
+        logInButton.layer.cornerRadius = 16
         logInButton.addTarget(self, action: #selector(logInButton(action:)), for: .touchUpInside)
         
         registrButton.translatesAutoresizingMaskIntoConstraints = false
         registrButton.setTitle("Зареєструватись", for: .normal)
         registrButton.backgroundColor = .orange
         registrButton.setTitleColor(.white, for: .normal)
-        registrButton.layer.cornerRadius = 8
+        registrButton.layer.cornerRadius = 16
         registrButton.addTarget(self, action: #selector(registrButton(action:)), for: .touchUpInside)
         
         askAboutRegistrLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -77,10 +83,11 @@ class LogInViewController: UIViewController {
         view.addSubview(logInButton)
         view.addSubview(registrButton)
         view.addSubview(askAboutRegistrLabel)
+        view.addSubview(imageDailyFood)
         
         let heightLabel: CGFloat = 20
-        let heightTextField: CGFloat = 25
-        let heightButton: CGFloat = 30
+        let heightTextField: CGFloat = 30
+        let heightButton: CGFloat = 35
         
         NSLayoutConstraint.activate([
             logInLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -92,7 +99,7 @@ class LogInViewController: UIViewController {
         NSLayoutConstraint.activate([
             logInTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logInTextField.topAnchor.constraint(equalTo: logInLabel.bottomAnchor, constant: 10),
-            logInTextField.widthAnchor.constraint(equalToConstant: view.frame.width / 100 * 90),
+            logInTextField.widthAnchor.constraint(equalToConstant: view.frame.width / 100 * 75),
             logInTextField.heightAnchor.constraint(equalToConstant: heightTextField)
             
         ])
@@ -106,7 +113,7 @@ class LogInViewController: UIViewController {
         NSLayoutConstraint.activate([
             passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 10),
-            passwordTextField.widthAnchor.constraint(equalToConstant: view.frame.width / 100 * 90),
+            passwordTextField.widthAnchor.constraint(equalToConstant: view.frame.width / 100 * 75),
             passwordTextField.heightAnchor.constraint(equalToConstant: heightTextField)
             
         ])
@@ -131,6 +138,15 @@ class LogInViewController: UIViewController {
             askAboutRegistrLabel.bottomAnchor.constraint(equalTo: registrButton.topAnchor, constant: -10),
             askAboutRegistrLabel.widthAnchor.constraint(equalToConstant: view.frame.width),
             askAboutRegistrLabel.heightAnchor.constraint(equalToConstant: heightLabel)
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageDailyFood.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageDailyFood.topAnchor.constraint(equalTo: view.topAnchor),
+            imageDailyFood.heightAnchor.constraint(equalToConstant: view.frame.height / 3),
+            imageDailyFood.widthAnchor.constraint(equalToConstant: view.frame.width / 2)
+
+            
         ])
         
     }
