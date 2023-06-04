@@ -7,7 +7,11 @@
 
 import UIKit
 
-class BasketViewController: UIViewController, UITabBarControllerDelegate {
+class BasketViewController: UIViewController, UITabBarControllerDelegate, CollectionViewCellDelegate {
+    
+    func updateBasketView(in cell: BasketViewController) {
+        basketCollectionView?.reloadData()
+    }
     
     var labelWithButtonBuy = UILabel()
     
@@ -95,7 +99,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate {
     @objc func buyItems(action: UIButton) {
         
         if action == action {
-            var dialogeMessage = UIAlertController(title: "Увага!", message: "Кнопка ще в розробці", preferredStyle: .alert)
+            let dialogeMessage = UIAlertController(title: "Увага!", message: "Кнопка ще в розробці", preferredStyle: .alert)
             let buttonOK = UIAlertAction(title: "Добре!", style: .default)
             dialogeMessage.addAction(buttonOK)
             self.present(dialogeMessage, animated: true)
@@ -138,21 +142,16 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
         
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
-        
-        //let reload = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadView(action:)))
-        
-        //navigationItem.rightBarButtonItems = [reload]
+
     }
     
-//    @objc func reloadView(action: UIButton) {
-//
-//        if action == action {
-//            let add = GlobalManagerArray.shared.getArray()
-//            addedItem = add
-//            basketCollectionView?.reloadData()
-//        }
-//    }
-    
+    func reloadData() {
+        addedItem = GlobalManagerArray.shared.getArray()
+        basketCollectionView?.reloadData()
+        let sumAndCount = GlobalManagerArray.shared.getSumOfItemPriceAndCount()
+        labelWithButtonBuy.text = "\(sumAndCount.1) товарів на суму \(sumAndCount.0)₴"
+    }
+
 }
 
 extension BasketViewController: UICollectionViewDataSource {
@@ -166,6 +165,8 @@ extension BasketViewController: UICollectionViewDataSource {
         
         cell!.configureCollectionViewCell(model: addedItem[indexPath.row])
         
+        cell?.delegate = self
+            
         return cell!
     }
     
@@ -174,5 +175,11 @@ extension BasketViewController: UICollectionViewDataSource {
 }
 
 extension BasketViewController: UICollectionViewDelegate {
+    
+}
+
+protocol CollectionViewCellDelegate: BasketViewController{
+    
+    func updateBasketView(in cell: Self)
     
 }

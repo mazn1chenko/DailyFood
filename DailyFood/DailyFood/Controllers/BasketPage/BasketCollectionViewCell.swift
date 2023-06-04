@@ -11,11 +11,13 @@ class BasketCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "BasketCustomCollectionViewCell"
     
+    weak var delegate: (any CollectionViewCellDelegate)?
+    
     var imageOfOrdersImage = UIImageView()
     
     let nameItem = UILabel()
     
-    let dateOrdersLabel = UILabel()
+    let deleteItemFromBasket = UIButton(type: .system)
     
     let priceItem = UILabel()
     
@@ -24,6 +26,8 @@ class BasketCollectionViewCell: UICollectionViewCell {
     let numberOfOrdersCount = 12
     
     let statusOfCurrentOrders = UILabel()
+    
+    var image = ""
     
     
     
@@ -59,12 +63,13 @@ class BasketCollectionViewCell: UICollectionViewCell {
         nameItem.textColor = .black
         nameItem.font = UIFont(name: "American Typewriter", size: 16)
                       
-        dateOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateOrdersLabel.text = "Х"
-        dateOrdersLabel.textAlignment = .right
-        dateOrdersLabel.textColor = .black
-        dateOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
-        dateOrdersLabel.textColor = .gray
+        deleteItemFromBasket.translatesAutoresizingMaskIntoConstraints = false
+        deleteItemFromBasket.setTitleColor(.black, for: .normal)
+        deleteItemFromBasket.setTitle("X", for: .normal)
+        deleteItemFromBasket.backgroundColor = .white
+        deleteItemFromBasket.contentHorizontalAlignment = .right
+        deleteItemFromBasket.addTarget(self, action: #selector(removeFromBasket(action:)), for: .touchUpInside)
+
         
         statusOfCurrentOrders.translatesAutoresizingMaskIntoConstraints = false
         statusOfCurrentOrders.text = "Знижка 5% "
@@ -80,7 +85,7 @@ class BasketCollectionViewCell: UICollectionViewCell {
         addSubview(imageOfOrdersImage)
         addSubview(nameItem)
         addSubview(priceItem)
-        addSubview(dateOrdersLabel)
+        addSubview(deleteItemFromBasket)
         addSubview(statusOfCurrentOrders)
         
         NSLayoutConstraint.activate([
@@ -100,10 +105,10 @@ class BasketCollectionViewCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            dateOrdersLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            dateOrdersLabel.bottomAnchor.constraint(equalTo: imageOfOrdersImage.topAnchor, constant: -10),
-            dateOrdersLabel.heightAnchor.constraint(equalToConstant: 30),
-            dateOrdersLabel.widthAnchor.constraint(equalToConstant: 200)
+            deleteItemFromBasket.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            deleteItemFromBasket.bottomAnchor.constraint(equalTo: imageOfOrdersImage.topAnchor, constant: -10),
+            deleteItemFromBasket.heightAnchor.constraint(equalToConstant: 30),
+            deleteItemFromBasket.widthAnchor.constraint(equalToConstant: 200)
         ])
         
         NSLayoutConstraint.activate([
@@ -124,12 +129,25 @@ class BasketCollectionViewCell: UICollectionViewCell {
         
     }
     
+    @objc func removeFromBasket(action: UIButton){
+        if action == action {
+            var model = ModelFood()
+            model.nameFood = nameItem.text ?? "NoNameInModel"
+            model.imageFood = image
+            model.priceOfFood = priceItem.text ?? "NoPriceInModel"
+            GlobalManagerArray.shared.removeItem(removeItem: model)
+            delegate?.reloadData() // Вызываем метод reloadData() у делегата
+        }
+    }
+    
     func configureCollectionViewCell(model: ModelFood){
         imageOfOrdersImage.image = UIImage(named: model.imageFood!)
+        image = model.imageFood!
         priceItem.text = model.priceOfFood
         nameItem.text = model.nameFood
         
     }
+    
     
     
 }

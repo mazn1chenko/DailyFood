@@ -66,7 +66,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         addItemToBasket.setTitleColor(.white, for: .normal)
         addItemToBasket.backgroundColor = .orange
         addItemToBasket.clipsToBounds = true
-        addItemToBasket.layer.cornerRadius = 4
+        addItemToBasket.layer.cornerRadius = 8
         addItemToBasket.addTarget(self, action: #selector(addToBasket(action:)), for: .touchUpInside)
         
 
@@ -84,8 +84,8 @@ class TypeOfFoodCell: UICollectionViewCell {
             GlobalManagerArray.shared.addDataInArray(data: model)
             
             addItemToBasket.setTitle("В корзині", for: .normal)
-            addItemToBasket.backgroundColor = .green
-            addItemToBasket.setTitleColor(.gray, for: .normal)
+            addItemToBasket.backgroundColor = .systemOrange
+            addItemToBasket.setTitleColor(.white, for: .normal)
                         
         }
     }
@@ -124,7 +124,8 @@ class TypeOfFoodCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             
             addItemToBasket.centerXAnchor.constraint(equalTo: namefOfFoodLabel.trailingAnchor),
-            addItemToBasket.centerYAnchor.constraint(equalTo: priceOfFoodLabel.centerYAnchor)
+            addItemToBasket.centerYAnchor.constraint(equalTo: priceOfFoodLabel.centerYAnchor),
+            addItemToBasket.heightAnchor.constraint(equalToConstant: 25)
             
         ])
         

@@ -12,7 +12,7 @@ class GlobalManagerArray {
     static let shared = GlobalManagerArray()
     
     var globalArray = [ModelFood]()
-    
+        
     func getSumOfItemPriceAndCount() -> (Int, Int) {
         
         var sum = 0
@@ -40,7 +40,13 @@ class GlobalManagerArray {
 
     }
     
-    
-    
-    
+    func removeItem(removeItem: ModelFood){
+        
+        if let index = globalArray.firstIndex(of: removeItem) {
+            globalArray.remove(at: index)
+        }else{
+            print("Something happens")
+        }
+        
+    }
 }

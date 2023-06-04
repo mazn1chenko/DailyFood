@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct ModelFood {
+struct ModelFood: Equatable {
     
     var nameFood: String?
     var typeFood: TypeOfFoodEnum?
