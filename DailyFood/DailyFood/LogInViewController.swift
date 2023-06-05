@@ -40,6 +40,7 @@ class LogInViewController: UIViewController {
         logInTextField.translatesAutoresizingMaskIntoConstraints = false
         logInTextField.backgroundColor = .lightGray
         logInTextField.layer.cornerRadius = 16
+        logInTextField.delegate = self
         
         
         passwordLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +53,8 @@ class LogInViewController: UIViewController {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.backgroundColor = .lightGray
         passwordTextField.layer.cornerRadius = 16
+        passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
         
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         logInButton.setTitle("Увійти", for: .normal)
@@ -150,10 +153,30 @@ class LogInViewController: UIViewController {
         ])
         
     }
+    
     @objc func logInButton(action: UIButton){
-        if action == action {
-            navigationController?.pushViewController(TabBarController(), animated: true)
+        
+        func alertError() {
+            let alert = UIAlertController(title: "Помилка!", message: "Невірно введений логін чи пароль", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "Спробувати ще", style: .cancel)
+            
+            alert.addAction(okAction)
+            
+            present(alert, animated: true)
+            
         }
+        
+        let passwordAdmin = "admin"
+        if action == action {
+            if logInTextField.text == passwordAdmin {
+                if passwordTextField.text == passwordAdmin{
+                    navigationController?.pushViewController(TabBarController(), animated: true)
+                } else { return alertError() }
+            } else { return alertError() }
+        }
+        
+        
     }
     
     @objc func registrButton(action: UIButton){
@@ -165,3 +188,17 @@ class LogInViewController: UIViewController {
     }
 
 }
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+
+
+
+
+
+
+
