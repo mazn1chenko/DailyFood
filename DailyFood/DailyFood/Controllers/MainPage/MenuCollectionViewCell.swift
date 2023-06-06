@@ -31,7 +31,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
+    //MARK: - Default two function Setup and Layout
+
     func setup(){
         nameOfTypeFood.translatesAutoresizingMaskIntoConstraints = false
         nameOfTypeFood.textAlignment = .center
@@ -61,7 +62,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         
         
     }
-    
+    //MARK: - method getting data from model
     func configureCollectionCell(model: String, image: String){
         nameOfTypeFood.text = model
         backGroungImageCell.image = UIImage(named: image)

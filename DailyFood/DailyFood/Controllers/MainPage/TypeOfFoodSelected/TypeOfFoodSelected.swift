@@ -29,7 +29,7 @@ class TypeOfFoodSelected: UIViewController {
         
     }
     
-    
+    //testing models of food while not ready real back-end items
     var menuFoodModel: [ModelFood] = {
         var hotdog = ModelFood()
         hotdog.nameFood = "Хот-дог"
@@ -126,6 +126,7 @@ class TypeOfFoodSelected: UIViewController {
         
     }()
     
+    //MARK: - Default two function Setup and Layout
 
     
     func setup() {
@@ -179,7 +180,7 @@ class TypeOfFoodSelected: UIViewController {
     }
 
 }
-
+//MARK: - Extensions
 extension TypeOfFoodSelected: UICollectionViewDelegate{
     
 }

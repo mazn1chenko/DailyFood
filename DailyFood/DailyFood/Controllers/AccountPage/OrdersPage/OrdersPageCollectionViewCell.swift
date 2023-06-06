@@ -42,6 +42,8 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Default two function Setup and Layout
+    
     func setup() {
         
         imageOfOrdersImage.translatesAutoresizingMaskIntoConstraints = false
@@ -141,6 +143,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         
     }
     
+    //getting data(image) from model
     func configureCollectionViewCell(image: String){
         
         imageOfOrdersImage.image = UIImage(named: image)

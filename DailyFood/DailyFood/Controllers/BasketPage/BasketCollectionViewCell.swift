@@ -46,6 +46,9 @@ class BasketCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Default two function Setup and Layout
+
+    
     func setup() {
         
         imageOfOrdersImage.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +139,7 @@ class BasketCollectionViewCell: UICollectionViewCell {
             model.imageFood = image
             model.priceOfFood = priceItem.text ?? "NoPriceInModel"
             GlobalManagerArray.shared.removeItem(removeItem: model)
-            delegate?.reloadData() // Вызываем метод reloadData() у делегата
+            delegate?.reloadData() // running method "reloadData" in Delegate
         }
     }
     

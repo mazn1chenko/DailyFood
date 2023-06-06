@@ -18,8 +18,7 @@ class MainViewController: UIViewController{
 
 
     
-    //private let identifier = "MyCell"
-    
+    //Testing topy of food while not ready back-end
     let menuFood = ["Перші блюда","Гарніри","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Мʼясне",]
     let menuFoodImage = ["firstPNG", "garnirPNG", "saladPNG", "snackPNG", "coctailsPNG", "dessertPNG", "breakfastPNG", "babyPNG", "cheffPNG", "meatsPNG"]
     
@@ -35,27 +34,24 @@ class MainViewController: UIViewController{
         setup()
         layout()
         checkForPermission()
-        //searchBurSettings()
-        
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-        
+                
+        //settings NavControlller(small changes)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
         navigationItem.backBarButtonItem?.tintColor = .gray
-        //navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = backgroundOfAllApps
         
 
         
     }
     
+    //MARK: - Default two function Setup and Layout 
     func setup() {
               
         layoutFLow.scrollDirection = .vertical
-        layoutFLow.minimumLineSpacing = 1
+        layoutFLow.minimumLineSpacing = 8
         layoutFLow.minimumInteritemSpacing = 1
-        layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 8,
-                                 height: (view.frame.size.width / 2) - 8)
+        layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 15,
+                                 height: (view.frame.size.width / 2) - 15)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutFLow)
 
@@ -75,8 +71,8 @@ class MainViewController: UIViewController{
 
         NSLayoutConstraint.activate([
             collectionView!.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
-            collectionView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
+            collectionView!.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            collectionView!.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             collectionView!.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
         ])
@@ -96,6 +92,8 @@ class MainViewController: UIViewController{
 
     }
     
+    
+    //MARK: - Notification
     func checkForPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings { settings in
@@ -118,9 +116,9 @@ class MainViewController: UIViewController{
     }
     
     func dispatchNotification() {
-        let identifier = "myWarning"
-        let title = "Time to thinking about Kostya"
-        let body = "On pupsik"
+        let identifier = "Reminder"
+        let title = "Є цікаві знижки!"
+        let body = "Ми приготували для тебе дещо цікавеньке"
         let hour = 13
         let minute = 15
         let isDaily = true
@@ -145,7 +143,7 @@ class MainViewController: UIViewController{
     }
 }
 
-
+//MARK: - Extensions
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

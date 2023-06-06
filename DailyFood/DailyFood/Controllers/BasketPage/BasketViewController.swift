@@ -9,9 +9,6 @@ import UIKit
 
 class BasketViewController: UIViewController, UITabBarControllerDelegate, CollectionViewCellDelegate {
     
-    func updateBasketView(in cell: BasketViewController) {
-        basketCollectionView?.reloadData()
-    }
     
     var labelWithButtonBuy = UILabel()
     
@@ -49,6 +46,8 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
         
     }
     
+    
+    //function for updating CollectionView after click on this view on TabBar
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1 {
@@ -60,6 +59,8 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
         }
     }
     
+    //MARK: - Default two function Setup and Layout
+
     func setup() {
         
         labelWithButtonBuy.translatesAutoresizingMaskIntoConstraints = false
@@ -138,11 +139,18 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
         ])
         
     }
+    
+    
     func settingsNavBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
         
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
 
+    }
+    
+    //Methods which update data in basket
+    func updateBasketView(in cell: BasketViewController) {
+        basketCollectionView?.reloadData()
     }
     
     func reloadData() {
@@ -154,6 +162,8 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
 
 }
 
+
+//MARK: - Extensions
 extension BasketViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return addedItem.count

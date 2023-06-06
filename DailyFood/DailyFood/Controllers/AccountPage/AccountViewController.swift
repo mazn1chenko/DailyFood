@@ -30,6 +30,8 @@ class AccountViewController: UIViewController{
         
     }
     
+    //MARK: - Default two function Setup and Layout
+
     func setup(){
         nameClientLabel.translatesAutoresizingMaskIntoConstraints = false
         nameClientLabel.textAlignment = .center

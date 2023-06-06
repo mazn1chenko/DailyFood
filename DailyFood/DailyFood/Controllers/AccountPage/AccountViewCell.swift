@@ -26,6 +26,7 @@ class AccountViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Default two function Setup and Layout
     
     func setup(){
         nameOfType.translatesAutoresizingMaskIntoConstraints = false

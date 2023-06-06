@@ -31,6 +31,7 @@ class OrdersPageViewController: UIViewController {
         layout()
         
     }
+    //MARK: - Default two function Setup and Layout
     
     func setup() {
         
@@ -70,7 +71,7 @@ class OrdersPageViewController: UIViewController {
 }
 
 
-
+//MARK: - Extensions
 
 extension OrdersPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
