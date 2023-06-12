@@ -25,6 +25,8 @@ class LaunchScreenView: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
             self.pushMainWindow()
         }
+        
+
     }
     
     func setup(){

@@ -6,29 +6,89 @@
 //
 
 import Foundation
-/*
-class ApiManager {
-    let headers = [
-        "X-RapidAPI-Key": "SIGN-UP-FOR-KEY",
-        "X-RapidAPI-Host": "generic-food-database1.p.rapidapi.com"
-    ]
-    
-    let request = NSMutableURLRequest(url: NSURL(string: "https://generic-food-database1.p.rapidapi.com/qXA3i5/generic_food")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 10.0)
-    request.httpMethod = "GET"
-    request.allHTTPHeaderFields = headers
-    
-    let session = URLSession.shared
-    let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-        if (error != nil) {
-            print(error)
-        } else {
-            let httpResponse = response as? HTTPURLResponse
-            print(httpResponse)
+
+    enum ApiType {
+        
+        case login
+        case getFood
+        case getInfoUsers
+        
+        
+        var baseURL: String{
+            
+            return "http://20.4.141.232"
         }
-    })
+        
+        var headers: [String: String]{
+            switch self {
+            case .login:
+                return [:]
+            default:
+                return [:]
+                
+            }
+        }
+        
+        var path: String {
+            switch self{
+            case .login: return "/users/logining"
+                
+            case .getFood: return "/loh"
+                
+            case .getInfoUsers: return "/loh"
+                
+            }
+            
+        }
+        
+        var request: URLRequest {
+            var url = URL(string: path, relativeTo: URL(string: baseURL)!)!
+            var request = URLRequest(url: url)
+            request.allHTTPHeaderFields = headers
+            switch self {
+            case .login: request.httpMethod = "GET"
+                return request
+            default: request.httpMethod = "POST"
+                return request
+                
+            }
+            
+        }
+        
+        
+    }
+
+
+class ApiManager {
     
-    dataTask.resume()
+    static let shared = ApiManager()
+    
+
+    
+    func loginFunc(login: String, password: String, completion: @escaping (ModelUsers) -> Void) {
+        var headers = ApiType.login.headers
+        headers["login"] = login
+        headers["password"] = password
+        
+        let path = "\(login)/\(password)"
+        
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/users/logining/")!)!
+        var request = URLRequest(url: url)
+        
+        //var request = ApiType.login.request
+        request.allHTTPHeaderFields = headers
+        print("Request: \(request)")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let data = data, let user = try? JSONDecoder().decode(ModelUsers.self, from: data){
+                completion(user)
+            }else{
+                print("SomethingWrong")
+            }
+            
+        }
+        task.resume()
+    }
+    
 }
-*/

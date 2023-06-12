@@ -25,6 +25,8 @@ class LogInViewController: UIViewController {
         
         setup()
         layout()
+        
+
 
     }
     
@@ -167,15 +169,31 @@ class LogInViewController: UIViewController {
             
         }
         
-        let passwordAdmin = "admin"
         if action == action {
-            if logInTextField.text == passwordAdmin {
-                if passwordTextField.text == passwordAdmin{
-                    navigationController?.pushViewController(TabBarController(), animated: true)
-                } else { return alertError() }
-            } else { return alertError() }
+            if let username = logInTextField.text, !username.isEmpty {
+                if let password = passwordTextField.text, !password.isEmpty {
+                    DispatchQueue.main.async {
+                        ApiManager.shared.loginFunc(login: username, password: password) { infoUsers in
+                            if infoUsers.id == infoUsers.id {
+                                DispatchQueue.main.async {
+                                    self.navigationController?.pushViewController(TabBarController(), animated: true)
+                                }
+                            }else {
+                                alertError()
+                            }
+                        }
+                        
+                    }
+                } else {
+                    alertError()
+                }
+            } else {
+                alertError()
+            }
         }
         
+        
+
         
     }
     

@@ -32,6 +32,7 @@
 		7186BC5E29C342D700DCB921 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7186BC5C29C342D700DCB921 /* LaunchScreen.storyboard */; };
 		719DEEC029C3757700264668 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEBF29C3757700264668 /* NavBarController.swift */; };
 		719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719DEEC229C387AD00264668 /* AccountViewCell.swift */; };
+		71B2462C2A37AA0500A3E897 /* UsersModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B2462B2A37AA0500A3E897 /* UsersModel .swift */; };
 		71C84A9B29E57D160076F8CA /* ManagerDataBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C84A9A29E57D160076F8CA /* ManagerDataBasket.swift */; };
 		71C84A9D29E5804E0076F8CA /* BasketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C84A9C29E5804E0076F8CA /* BasketCollectionViewCell.swift */; };
 		71D44E3E29DEE63200C83BF4 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D44E3D29DEE63200C83BF4 /* HexColor.swift */; };
@@ -66,6 +67,7 @@
 		7186BC5F29C342D700DCB921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		719DEEBF29C3757700264668 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		719DEEC229C387AD00264668 /* AccountViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewCell.swift; sourceTree = "<group>"; };
+		71B2462B2A37AA0500A3E897 /* UsersModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersModel .swift"; sourceTree = "<group>"; };
 		71C84A9A29E57D160076F8CA /* ManagerDataBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDataBasket.swift; sourceTree = "<group>"; };
 		71C84A9C29E5804E0076F8CA /* BasketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCollectionViewCell.swift; sourceTree = "<group>"; };
 		71D44E3D29DEE63200C83BF4 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		71DB59BC29CC8D2A0024356E /* ApiModel */ = {
 			isa = PBXGroup;
 			children = (
+				71B2462B2A37AA0500A3E897 /* UsersModel .swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				716521392A2B53A1007C4AAF /* LogInViewController.swift in Sources */,
 				7113AE5029D4720600C12957 /* OrdersPageViewController.swift in Sources */,
 				71E8086029D88B1A002112C2 /* LaunchScreenView.swift in Sources */,
+				71B2462C2A37AA0500A3E897 /* UsersModel .swift in Sources */,
 				7113AE5229D4721D00C12957 /* DataPageViewController.swift in Sources */,
 				7160BE3629C9DFFE00090303 /* TypeOfFoodSelected.swift in Sources */,
 				7113AE5729D4724000C12957 /* DeliveryPageViewController.swift in Sources */,
