@@ -15,13 +15,11 @@ class MainViewController: UIViewController{
     private var collectionView: UICollectionView?
     
     let layoutFLow = UICollectionViewFlowLayout()
-
-
     
-    //Testing topy of food while not ready back-end
-    let menuFood = ["Перші блюда","Гарніри","Салати","Холодні закуски","Напої","Десерти","Сніданки","Дитяче","Від Шефа","Мʼясне",]
-    let menuFoodImage = ["firstPNG", "garnirPNG", "saladPNG", "snackPNG", "coctailsPNG", "dessertPNG", "breakfastPNG", "babyPNG", "cheffPNG", "meatsPNG"]
+    let dataManager = DataManager()
     
+    var typeOfFood: TypeOfFoodAPI = []
+        
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -30,7 +28,7 @@ class MainViewController: UIViewController{
         view.backgroundColor = backgroundOfAllApps
         
         self.navigationItem.setHidesBackButton(true, animated: false)
-
+        network()
         setup()
         layout()
         checkForPermission()
@@ -40,9 +38,18 @@ class MainViewController: UIViewController{
         navigationItem.backBarButtonItem?.tintColor = .gray
         navigationController?.navigationBar.barTintColor = backgroundOfAllApps
         
-
         
     }
+    //MARK: - Getting data from DataManager
+    func network() {
+        dataManager.fetch{
+            DispatchQueue.main.async {
+                self.typeOfFood = self.dataManager.typeOfFood
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+
     
     //MARK: - Default two function Setup and Layout 
     func setup() {
@@ -147,13 +154,13 @@ class MainViewController: UIViewController{
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menuFood.count
+        return typeOfFood.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.reuseID, for: indexPath) as? MenuCollectionViewCell
-        
-        cell!.configureCollectionCell(model: menuFood[indexPath.row], image: menuFoodImage[indexPath.row])
+        cell!.configureCollectionCell(model: typeOfFood[indexPath.row])
+        print(typeOfFood[indexPath.row].id)
         return cell!
         
     }
@@ -166,7 +173,10 @@ extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = TypeOfFoodSelected()
-        vc.navigationItem.title = menuFood[indexPath.row]
+        var selectedType = typeOfFood[indexPath.row]
+        vc.selectedIndex = selectedType.id.unsafelyUnwrapped
+        vc.title = selectedType.name
         navigationController?.pushViewController(vc, animated: true)
+
     }
 }

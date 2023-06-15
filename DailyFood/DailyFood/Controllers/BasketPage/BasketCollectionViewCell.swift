@@ -134,20 +134,21 @@ class BasketCollectionViewCell: UICollectionViewCell {
     
     @objc func removeFromBasket(action: UIButton){
         if action == action {
-            var model = ModelFood()
-            model.nameFood = nameItem.text ?? "NoNameInModel"
-            model.imageFood = image
-            model.priceOfFood = priceItem.text ?? "NoPriceInModel"
-            GlobalManagerArray.shared.removeItem(removeItem: model)
-            delegate?.reloadData() // running method "reloadData" in Delegate
+//            var model = SpecificTypeOfFoodElement.self
+//            model.nameFood = nameItem.text ?? "NoNameInModel"
+//            //model.imageFood = image
+//            model.priceOfFood = priceItem.text ?? "NoPriceInModel"
+//            GlobalManagerArray.shared.removeItem(removeItem: model)
+//            delegate?.reloadData() // running method "reloadData" in Delegate
+            print("RemoveFromBasket Not working need to recreated with new model")
         }
     }
     
-    func configureCollectionViewCell(model: ModelFood){
-        imageOfOrdersImage.image = UIImage(named: model.imageFood!)
-        image = model.imageFood!
-        priceItem.text = model.priceOfFood
-        nameItem.text = model.nameFood
+    func configureCollectionViewCell(model: SpecificTypeOfFoodElement){
+        //imageOfOrdersImage.image = UIImage(named: model.imageFood!)
+        //image = model.imageFood!
+        priceItem.text = model.price.debugDescription
+        nameItem.text = model.name?.debugDescription
         
     }
     

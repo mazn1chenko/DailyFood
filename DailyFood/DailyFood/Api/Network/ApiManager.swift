@@ -63,7 +63,7 @@ class ApiManager {
     
     static let shared = ApiManager()
     
-
+    
     
     func loginFunc(login: String, password: String, completion: @escaping (ModelUsers) -> Void) {
         var headers = ApiType.login.headers
@@ -91,4 +91,41 @@ class ApiManager {
         task.resume()
     }
     
+    func gettingTypeOfFood(completion: @escaping ([TypeOfFoodAPIElement]) -> Void) {
+        let path = "/categories/"
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232")!)!
+        var request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let data = data, let typeOfFood = try? JSONDecoder().decode([TypeOfFoodAPIElement].self, from: data){
+                completion(typeOfFood)
+            }else{
+                print("SomethingWrong")
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
+    func gettingSpecificTypeOfFood(completion: @escaping([SpecificTypeOfFoodElement]) -> Void)  {
+        let path = "/dishes"
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232")!)!
+        var request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let data = data, let food = try? JSONDecoder().decode([SpecificTypeOfFoodElement].self, from: data){
+                completion(food)
+            }else{
+                print("SomethingWrong")
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
 }
+        
+
+

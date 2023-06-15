@@ -18,6 +18,9 @@
 		7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7125C5E529C36F5500B85429 /* AccountViewController.swift */; };
 		7155CB1229C7264300A55F7E /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155CB1129C7264300A55F7E /* BasketViewController.swift */; };
 		7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155CB1329C7326300A55F7E /* MenuCollectionViewCell.swift */; };
+		715665D92A3B0FF4008A8FD2 /* TypeOfFoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715665D82A3B0FF4008A8FD2 /* TypeOfFoodsModel.swift */; };
+		715665DC2A3B1F8A008A8FD2 /* SpecificTypeOfFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715665DB2A3B1F8A008A8FD2 /* SpecificTypeOfFood.swift */; };
+		715665E02A3B5153008A8FD2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715665DF2A3B5153008A8FD2 /* DataManager.swift */; };
 		7160BE3629C9DFFE00090303 /* TypeOfFoodSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160BE3529C9DFFE00090303 /* TypeOfFoodSelected.swift */; };
 		7160BE3B29C9E36F00090303 /* TypeOfFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7160BE3A29C9E36F00090303 /* TypeOfFoodCell.swift */; };
 		716521392A2B53A1007C4AAF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716521382A2B53A1007C4AAF /* LogInViewController.swift */; };
@@ -51,6 +54,9 @@
 		7125C5E529C36F5500B85429 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		7155CB1129C7264300A55F7E /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		7155CB1329C7326300A55F7E /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		715665D82A3B0FF4008A8FD2 /* TypeOfFoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfFoodsModel.swift; sourceTree = "<group>"; };
+		715665DB2A3B1F8A008A8FD2 /* SpecificTypeOfFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificTypeOfFood.swift; sourceTree = "<group>"; };
+		715665DF2A3B5153008A8FD2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7160BE3529C9DFFE00090303 /* TypeOfFoodSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfFoodSelected.swift; sourceTree = "<group>"; };
 		7160BE3A29C9E36F00090303 /* TypeOfFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfFoodCell.swift; sourceTree = "<group>"; };
 		716521382A2B53A1007C4AAF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +193,31 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		715665DA2A3B1469008A8FD2 /* Launch+LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				716521382A2B53A1007C4AAF /* LogInViewController.swift */,
+				71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */,
+			);
+			path = "Launch+LogIn";
+			sourceTree = "<group>";
+		};
+		715665DD2A3B4E10008A8FD2 /* BD(NotWorking) */ = {
+			isa = PBXGroup;
+			children = (
+				7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */,
+			);
+			path = "BD(NotWorking)";
+			sourceTree = "<group>";
+		};
+		715665DE2A3B513F008A8FD2 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				715665DF2A3B5153008A8FD2 /* DataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
 		7160BE3729C9E25D00090303 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,12 +251,12 @@
 			path = AccountPage;
 			sourceTree = "<group>";
 		};
-		716CF62029E180A70013E158 /* Model */ = {
+		716CF62029E180A70013E158 /* TestingModel */ = {
 			isa = PBXGroup;
 			children = (
 				716CF62129E180BB0013E158 /* TestingModel.swift */,
 			);
-			path = Model;
+			path = TestingModel;
 			sourceTree = "<group>";
 		};
 		716CF62329E198060013E158 /* BasketPage */ = {
@@ -250,9 +281,9 @@
 			isa = PBXGroup;
 			children = (
 				7186BC4D29C342D600DCB921 /* DailyFood */,
-				7186BC4C29C342D600DCB921 /* Products */,
-				02ED078F04DC875761AA5D85 /* Pods */,
 				B13CC556A85F3E91D20DA34F /* Frameworks */,
+				02ED078F04DC875761AA5D85 /* Pods */,
+				7186BC4C29C342D600DCB921 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,16 +298,17 @@
 		7186BC4D29C342D600DCB921 /* DailyFood */ = {
 			isa = PBXGroup;
 			children = (
-				716CF62029E180A70013E158 /* Model */,
+				715665DE2A3B513F008A8FD2 /* DataManager */,
 				71DB59BA29CC8D140024356E /* Api */,
 				7106D70C29C343CF001F754E /* Application */,
-				7125C5DF29C363AA00B85429 /* Helpers */,
-				7106D70D29C343DA001F754E /* Controllers */,
-				71E8085F29D88B1A002112C2 /* LaunchScreenView.swift */,
-				716521382A2B53A1007C4AAF /* LogInViewController.swift */,
 				719DEEC129C3773700264668 /* Base */,
+				715665DD2A3B4E10008A8FD2 /* BD(NotWorking) */,
+				7106D70D29C343DA001F754E /* Controllers */,
+				716CF62029E180A70013E158 /* TestingModel */,
+				7125C5DF29C363AA00B85429 /* Helpers */,
+				715665DA2A3B1469008A8FD2 /* Launch+LogIn */,
+				71DB59BC29CC8D2A0024356E /* Model */,
 				7106D70B29C343B6001F754E /* SupportingFiles */,
-				7186BC5729C342D600DCB921 /* DailyFood.xcdatamodeld */,
 			);
 			path = DailyFood;
 			sourceTree = "<group>";
@@ -293,26 +325,27 @@
 		71DB59BA29CC8D140024356E /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				71DB59BC29CC8D2A0024356E /* ApiModel */,
-				71DB59BB29CC8D210024356E /* ApiManager */,
+				71DB59BB29CC8D210024356E /* Network */,
 			);
 			path = Api;
 			sourceTree = "<group>";
 		};
-		71DB59BB29CC8D210024356E /* ApiManager */ = {
+		71DB59BB29CC8D210024356E /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				71DB59BD29CC8D440024356E /* ApiManager.swift */,
 			);
-			path = ApiManager;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		71DB59BC29CC8D2A0024356E /* ApiModel */ = {
+		71DB59BC29CC8D2A0024356E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				71B2462B2A37AA0500A3E897 /* UsersModel .swift */,
+				715665D82A3B0FF4008A8FD2 /* TypeOfFoodsModel.swift */,
+				715665DB2A3B1F8A008A8FD2 /* SpecificTypeOfFood.swift */,
 			);
-			path = ApiModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B13CC556A85F3E91D20DA34F /* Frameworks */ = {
@@ -445,6 +478,7 @@
 				719DEEC329C387AD00264668 /* AccountViewCell.swift in Sources */,
 				7182F43029EEA11E00272041 /* LocationPageViewController.swift in Sources */,
 				7186BC4F29C342D600DCB921 /* AppDelegate.swift in Sources */,
+				715665DC2A3B1F8A008A8FD2 /* SpecificTypeOfFood.swift in Sources */,
 				7113AE5429D4722700C12957 /* BonusPageViewController.swift in Sources */,
 				7160BE3B29C9E36F00090303 /* TypeOfFoodCell.swift in Sources */,
 				7125C5E629C36F5500B85429 /* AccountViewController.swift in Sources */,
@@ -452,6 +486,8 @@
 				7155CB1429C7326300A55F7E /* MenuCollectionViewCell.swift in Sources */,
 				7125C5E429C36F1E00B85429 /* MainViewController.swift in Sources */,
 				71DB59BE29CC8D440024356E /* ApiManager.swift in Sources */,
+				715665D92A3B0FF4008A8FD2 /* TypeOfFoodsModel.swift in Sources */,
+				715665E02A3B5153008A8FD2 /* DataManager.swift in Sources */,
 				7166F6FF29DD895C00AFD81E /* OrdersPageCollectionViewCell.swift in Sources */,
 				716CF62229E180BB0013E158 /* TestingModel.swift in Sources */,
 				71D44E3E29DEE63200C83BF4 /* HexColor.swift in Sources */,

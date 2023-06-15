@@ -63,9 +63,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
         
     }
     //MARK: - method getting data from model
-    func configureCollectionCell(model: String, image: String){
-        nameOfTypeFood.text = model
-        backGroungImageCell.image = UIImage(named: image)
+    func configureCollectionCell(model: TypeOfFoodAPIElement){
+        nameOfTypeFood.text = model.name
     }
     
 }

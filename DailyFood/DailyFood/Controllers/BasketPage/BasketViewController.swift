@@ -14,7 +14,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
     
     let buyButton = UIButton()
             
-    var addedItem = [ModelFood]()
+    var addedItem: SpecificTypeOfFood = []
     
     var sumOfItemPrice = 0
     

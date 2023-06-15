@@ -15,7 +15,7 @@ class GlobalManagerArray {
     
     
     //main array which contains added food/ He updating in real time when user remove from basket something
-    var globalArray = [ModelFood]()
+    var globalArray: SpecificTypeOfFood = []
     
     //method for calculating sum and price of item/foods which was added user
     func getSumOfItemPriceAndCount() -> (Int, Int) {
@@ -25,9 +25,9 @@ class GlobalManagerArray {
         var count = 0
         
         for i in globalArray {
-            var str = i.priceOfFood
-            str?.removeLast(2)
-            sum += Int(str!)!
+            var str = i.price.debugDescription
+            str.removeLast(2)
+            sum += Int(str)!
         }
         count = globalArray.count
         return (sum, count)
@@ -36,14 +36,14 @@ class GlobalManagerArray {
     
     
     //method getting array for dispay on screen(BascketVS or something else)
-    func getArray() -> [ModelFood]{
+    func getArray() -> [SpecificTypeOfFoodElement]{
         
         return globalArray
     }
     
     
     //method of adding food in basket
-    func addDataInArray(data: ModelFood){
+    func addDataInArray(data: SpecificTypeOfFoodElement){
         
         globalArray.append(data)
 
@@ -51,13 +51,13 @@ class GlobalManagerArray {
     
     
     //method of remove food from basket
-    func removeItem(removeItem: ModelFood){
+    func removeItem(removeItem: SpecificTypeOfFoodElement){
         
-        if let index = globalArray.firstIndex(of: removeItem) {
-            globalArray.remove(at: index)
-        }else{
-            print("Something happens")
-        }
-        
+//        if let index = globalArray.firstIndex(of: removeItem) {
+//            globalArray.remove(at: index)
+//        }else{
+//            print("Something happens")
+//        }
+        print("remove item")
     }
 }

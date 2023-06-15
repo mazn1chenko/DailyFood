@@ -78,17 +78,18 @@ class TypeOfFoodCell: UICollectionViewCell {
     @objc func addToBasket(action: UIButton) {
         
         if action == action {
-            var model = ModelFood()
-            model.nameFood = namefOfFoodLabel.text ?? "NoNameInModel"
-            model.imageFood = image
-            model.priceOfFood = priceOfFoodLabel.text ?? "NoPriceInModel"
-            
-            GlobalManagerArray.shared.addDataInArray(data: model)
-            
-            addItemToBasket.setTitle("В корзині", for: .normal)
-            addItemToBasket.backgroundColor = .systemOrange
-            addItemToBasket.setTitleColor(.white, for: .normal)
-                        
+//            var model = SpecificTypeOfFoodElement()
+//            model.name = namefOfFoodLabel.text ?? "NoNameInModel"
+//            model.image = image
+//            model.priceOfFood = priceOfFoodLabel.text ?? "NoPriceInModel"
+//
+//            GlobalManagerArray.shared.addDataInArray(data: model)
+//
+//            addItemToBasket.setTitle("В корзині", for: .normal)
+//            addItemToBasket.backgroundColor = .systemOrange
+//            addItemToBasket.setTitleColor(.white, for: .normal)
+//
+            print("Добавлен в корзину")
         }
     }
 
@@ -134,13 +135,13 @@ class TypeOfFoodCell: UICollectionViewCell {
         
     }
     //MARK: - Getting data from model
-    func configureCollectionCell(model: ModelFood){
+    func configureCollectionCell(model: SpecificTypeOfFoodElement){
         
-        priceOfFoodLabel.text = "\(model.priceOfFood ?? "NoPrice") ₴"
-        image = model.imageFood!
-        imageOfFoodImage.image = UIImage(named: model.imageFood!)
-        namefOfFoodLabel.text = model.nameFood
-        typeFoodCellLabel.text = model.typeFood?.rawValue
+        priceOfFoodLabel.text = model.price.debugDescription
+        //image = model.imageFood!
+        //imageOfFoodImage.image = UIImage(named: model.image)
+        namefOfFoodLabel.text = model.name
+        //typeFoodCellLabel.text = model.categoryID.debugDescription
         
     }
 }

@@ -14,121 +14,42 @@ class TypeOfFoodSelected: UIViewController {
     
     let layoutFLow = UICollectionViewFlowLayout()
     
-    var sortedArray = [ModelFood]()
+    var sortedArray: SpecificTypeOfFood = []
+            
+    var allFoodArray: SpecificTypeOfFood = []
+    
+    var typeOfFood: TypeOfFoodAPI = []
+    
+    let dataManager = DataManager()
+    
+    var selectedIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = backgroundOfAllApps
         
+        network()
         setup()
         layout()
         settingsNavBar()
-        funcSortedArray()
-        
-        
+
+ 
     }
     
-    //testing models of food while not ready real back-end items
-    var menuFoodModel: [ModelFood] = {
-        var hotdog = ModelFood()
-        hotdog.nameFood = "Хот-дог"
-        hotdog.typeFood = .snack
-        hotdog.priceOfFood = "24"
-        hotdog.imageFood = "hotdog"
-        
-        var borsh = ModelFood()
-        borsh.nameFood = "Борщ"
-        borsh.typeFood = .first
-        borsh.priceOfFood = "21"
-        borsh.imageFood = "borsh"
-        
-        var pancake = ModelFood()
-        pancake.nameFood = "Панкейки"
-        pancake.typeFood = .desert
-        pancake.priceOfFood = "30"
-        pancake.imageFood = "pancake"
-        
-        var soup = ModelFood()
-        soup.nameFood = "Суп"
-        soup.typeFood = .first
-        soup.priceOfFood = "19"
-        soup.imageFood = "soup"
-        
-        var chicken = ModelFood()
-        chicken.nameFood = "Курка"
-        chicken.typeFood = .meats
-        chicken.priceOfFood = "27"
-        chicken.imageFood = "chicken"
-        
-        var pig = ModelFood()
-        pig.nameFood = "Свинина"
-        pig.typeFood = .meats
-        pig.priceOfFood = "36"
-        pig.imageFood = "pig"
-        
-        var potato = ModelFood()
-        potato.nameFood = "Картопля"
-        potato.typeFood = .garnir
-        potato.priceOfFood = "20"
-        potato.imageFood = "potato"
-        
-        var rice = ModelFood()
-        rice.nameFood = "Рис"
-        rice.typeFood = .garnir
-        rice.priceOfFood = "20"
-        rice.imageFood = "rice"
-        
-        var fish = ModelFood()
-        fish.nameFood = "Риба"
-        fish.typeFood = .meats
-        fish.priceOfFood = "28"
-        fish.imageFood = "fish"
-        
-        var coffee = ModelFood()
-        coffee.nameFood = "Кофе"
-        coffee.typeFood = .coctails
-        coffee.priceOfFood = "16"
-        coffee.imageFood = "coffee"
-        
-        var tea = ModelFood()
-        tea.nameFood = "Чай"
-        tea.typeFood = .coctails
-        tea.priceOfFood = "12"
-        tea.imageFood = "tea"
-        
-        var juice = ModelFood()
-        juice.nameFood = "Сок"
-        juice.typeFood = .coctails
-        juice.priceOfFood = "20"
-        juice.imageFood = "juice"
-        
-        var cheesecake = ModelFood()
-        cheesecake.nameFood = "Чизкейк"
-        cheesecake.typeFood = .desert
-        cheesecake.priceOfFood = "15"
-        cheesecake.imageFood = "cheesecake"
-        
-        var cezar = ModelFood()
-        cezar.nameFood = "Цезар"
-        cezar.typeFood = .salad
-        cezar.priceOfFood = "18"
-        cezar.imageFood = "cezar"
-        
-        var summer = ModelFood()
-        summer.nameFood = "Літній"
-        summer.typeFood = .salad
-        summer.priceOfFood = "12"
-        summer.imageFood = "summer"
-        
-        
-        return [hotdog, pancake, borsh, soup, chicken, coffee, tea, cheesecake, summer, cezar, pig, fish, juice, rice, potato]
-        
-    }()
+    func network() {
+        dataManager.fetch{
+            DispatchQueue.main.async {
+                self.allFoodArray = self.dataManager.specificFood
+                self.typeOfFood = self.dataManager.typeOfFood
+                self.funcSortedArray()
+                self.collectionView?.reloadData()
+            }
+        }
+    }
     
     //MARK: - Default two function Setup and Layout
 
-    
     func setup() {
         
         layoutFLow.scrollDirection = .vertical
@@ -170,13 +91,11 @@ class TypeOfFoodSelected: UIViewController {
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
     }
     
-    func funcSortedArray(){
-        for i in menuFoodModel{
-            if i.typeFood?.rawValue == navigationItem.title{
-                sortedArray.append(i)
-            }
-        }
-        print(sortedArray.count)
+    func funcSortedArray() {
+        guard selectedIndex < typeOfFood.count else { return }
+        let selectedTypeID = typeOfFood[selectedIndex].id
+        sortedArray = allFoodArray.filter { $0.categoryID == (selectedTypeID! - 1) }
+        collectionView?.reloadData()
     }
 
 }
