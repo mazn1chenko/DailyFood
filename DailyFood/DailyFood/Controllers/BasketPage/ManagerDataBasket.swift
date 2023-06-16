@@ -50,7 +50,6 @@ class GlobalManagerArray {
     
     //method of remove food from basket
     func removeItem(removeItem: SpecificTypeOfFoodElement) {
-        print(removeItem.id)
         if let index = globalArray.firstIndex(of: removeItem) {
             globalArray.remove(at: index)
         } else {

@@ -50,7 +50,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         namefOfFoodLabel.text = "Сарделька в тИсти"
         namefOfFoodLabel.numberOfLines = 0
         namefOfFoodLabel.adjustsFontSizeToFitWidth = true
-        namefOfFoodLabel.sizeToFit()
+        namefOfFoodLabel.font = UIFont.boldSystemFont(ofSize: 17)
         namefOfFoodLabel.textAlignment = .center
         namefOfFoodLabel.textColor = .black
 
@@ -66,6 +66,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         imageOfFoodImage.translatesAutoresizingMaskIntoConstraints = false
         imageOfFoodImage.image = UIImage(named: "hotdog")
+        imageOfFoodImage.layer.cornerRadius = 10
         
         
         
@@ -89,37 +90,40 @@ class TypeOfFoodCell: UICollectionViewCell {
 
         
         NSLayoutConstraint.activate([
-            namefOfFoodLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            namefOfFoodLabel.topAnchor.constraint(equalTo: topAnchor),
-            namefOfFoodLabel.widthAnchor.constraint(equalToConstant: 80),
-            namefOfFoodLabel.heightAnchor.constraint(equalToConstant: 50)
-            
+            imageOfFoodImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            imageOfFoodImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageOfFoodImage.heightAnchor.constraint(equalToConstant: bounds.width / 4.5),
+            imageOfFoodImage.widthAnchor.constraint(equalToConstant: bounds.width / 4.5)
+        ])
         
+        NSLayoutConstraint.activate([
+            namefOfFoodLabel.leadingAnchor.constraint(equalTo: imageOfFoodImage.trailingAnchor),
+            namefOfFoodLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            namefOfFoodLabel.topAnchor.constraint(equalTo: imageOfFoodImage.topAnchor),
+            namefOfFoodLabel.heightAnchor.constraint(equalToConstant: 20)
+            
         ])
         
         NSLayoutConstraint.activate([
             
-            priceOfFoodLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
-            priceOfFoodLabel.trailingAnchor.constraint(equalTo: namefOfFoodLabel.leadingAnchor),
-            priceOfFoodLabel.widthAnchor.constraint(equalToConstant: 40),
-            priceOfFoodLabel.heightAnchor.constraint(equalToConstant: 20)
-            
-        ])
-        
-        NSLayoutConstraint.activate([
-            imageOfFoodImage.topAnchor.constraint(equalTo: topAnchor, constant: -1),
-            imageOfFoodImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 1),
-            imageOfFoodImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
-            imageOfFoodImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1)
+            priceOfFoodLabel.bottomAnchor.constraint(equalTo: imageOfFoodImage.bottomAnchor),
+            priceOfFoodLabel.trailingAnchor.constraint(equalTo: namefOfFoodLabel.centerXAnchor),
+            priceOfFoodLabel.heightAnchor.constraint(equalToConstant: 25),
+            priceOfFoodLabel.widthAnchor.constraint(equalToConstant: bounds.width / 3)
+
         ])
         
         NSLayoutConstraint.activate([
             
-            addItemToBasket.centerXAnchor.constraint(equalTo: namefOfFoodLabel.trailingAnchor),
+            addItemToBasket.leadingAnchor.constraint(equalTo: namefOfFoodLabel.centerXAnchor),
             addItemToBasket.centerYAnchor.constraint(equalTo: priceOfFoodLabel.centerYAnchor),
-            addItemToBasket.heightAnchor.constraint(equalToConstant: 25)
+            addItemToBasket.heightAnchor.constraint(equalToConstant: 25),
+            addItemToBasket.widthAnchor.constraint(equalToConstant: bounds.width / 3)
             
         ])
+        
+        
+        
         
         
     }
@@ -130,12 +134,12 @@ class TypeOfFoodCell: UICollectionViewCell {
         var model = SpecificTypeOfFoodElement()
         model.name = namefOfFoodLabel.text ?? "NoNameInModel"
         model.image = imageString
-        if let unwrappedPrice = priceOfFoodLabel.text, let intValue = Int(unwrappedPrice){
+        let priceWithOutSymbol = priceOfFoodLabel.text
+        if let unwrappedPrice = priceWithOutSymbol?.dropLast(2), let intValue = Int(unwrappedPrice){
             model.price = intValue
             
         }
         model.id = temporaryValueIDOfFood
-        print("\(model.id)")
         GlobalManagerArray.shared.addDataInArray(data: model)
         
         addItemToBasket.setTitle("В корзині", for: .normal)
@@ -157,7 +161,7 @@ class TypeOfFoodCell: UICollectionViewCell {
                 
             }
         }
-        priceOfFoodLabel.text = "\(Int(model.price ?? 000))"
+        priceOfFoodLabel.text = "\(Int(model.price ?? 000)) ₴"
         namefOfFoodLabel.text = model.name ?? "noValueinConfigureSell"
     }
 }

@@ -172,7 +172,7 @@ extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = TypeOfFoodSelected()
-        var selectedType = typeOfFood[indexPath.row]
+        let selectedType = typeOfFood[indexPath.row]
         vc.selectedIndex = selectedType.id.unsafelyUnwrapped
         vc.title = selectedType.name
         navigationController?.pushViewController(vc, animated: true)

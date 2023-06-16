@@ -55,9 +55,10 @@ class TypeOfFoodSelected: UIViewController {
         layoutFLow.scrollDirection = .vertical
         layoutFLow.minimumLineSpacing = 6
         layoutFLow.minimumInteritemSpacing = 4
-        layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 8,
-                                     height: (view.frame.size.width / 2) - 8)
+        //layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 5,
+                                     //height: (view.frame.size.width / 2) - 5)
         
+        layoutFLow.itemSize = CGSize(width: (view.frame.size.width) - 5, height: view.frame.size.width / 4)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutFLow)
         
         guard let collectionView = collectionView else {return}
