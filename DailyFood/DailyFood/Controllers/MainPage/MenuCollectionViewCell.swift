@@ -37,6 +37,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         nameOfTypeFood.translatesAutoresizingMaskIntoConstraints = false
         nameOfTypeFood.textAlignment = .center
         nameOfTypeFood.textColor = .orange
+        nameOfTypeFood.font = UIFont.boldSystemFont(ofSize: 18)
         
         backGroungImageCell.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,7 +49,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             nameOfTypeFood.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameOfTypeFood.topAnchor.constraint(equalTo: topAnchor),
+            nameOfTypeFood.centerYAnchor.constraint(equalTo: centerYAnchor),
             nameOfTypeFood.heightAnchor.constraint(equalToConstant: 60),
             nameOfTypeFood.widthAnchor.constraint(equalToConstant: frame.width)
         ])

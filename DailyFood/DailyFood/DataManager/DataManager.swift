@@ -22,9 +22,6 @@ class DataManager {
         
         ApiManager.shared.gettingSpecificTypeOfFood { specificProducts in
             self.specificFood = specificProducts
-            for i in self.specificFood {
-                print(i.name, i.categoryID)
-            }
             completion()
         }
     }

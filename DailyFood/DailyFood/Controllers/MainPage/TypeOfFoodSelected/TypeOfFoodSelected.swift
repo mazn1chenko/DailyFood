@@ -55,8 +55,6 @@ class TypeOfFoodSelected: UIViewController {
         layoutFLow.scrollDirection = .vertical
         layoutFLow.minimumLineSpacing = 6
         layoutFLow.minimumInteritemSpacing = 4
-        //layoutFLow.itemSize = CGSize(width: (view.frame.size.width / 2) - 5,
-                                     //height: (view.frame.size.width / 2) - 5)
         
         layoutFLow.itemSize = CGSize(width: (view.frame.size.width) - 5, height: view.frame.size.width / 4)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutFLow)
@@ -93,9 +91,11 @@ class TypeOfFoodSelected: UIViewController {
     }
     
     func funcSortedArray() {
-        guard selectedIndex < typeOfFood.count else { return }
-        let selectedTypeID = typeOfFood[selectedIndex].id
-        sortedArray = allFoodArray.filter { $0.categoryID == (selectedTypeID! - 1) }
+        for i in allFoodArray{
+            if i.categoryID == selectedIndex{
+                sortedArray.append(i)
+            }
+        }
         collectionView?.reloadData()
     }
 
@@ -115,6 +115,7 @@ extension TypeOfFoodSelected: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeOfFoodCell.reuseID, for: indexPath) as? TypeOfFoodCell
         cell!.configureCollectionCell(model: sortedArray[indexPath.row])
+        print(cell)
         return cell!
     }
     
