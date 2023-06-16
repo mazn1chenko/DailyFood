@@ -160,7 +160,6 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.reuseID, for: indexPath) as? MenuCollectionViewCell
         cell!.configureCollectionCell(model: typeOfFood[indexPath.row])
-        print(typeOfFood[indexPath.row].id)
         return cell!
         
     }

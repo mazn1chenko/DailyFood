@@ -25,9 +25,7 @@ class GlobalManagerArray {
         var count = 0
         
         for i in globalArray {
-            var str = i.price.debugDescription
-            str.removeLast(2)
-            sum += Int(str)!
+            sum += i.price ?? 0
         }
         count = globalArray.count
         return (sum, count)
@@ -51,13 +49,12 @@ class GlobalManagerArray {
     
     
     //method of remove food from basket
-    func removeItem(removeItem: SpecificTypeOfFoodElement){
-        
-//        if let index = globalArray.firstIndex(of: removeItem) {
-//            globalArray.remove(at: index)
-//        }else{
-//            print("Something happens")
-//        }
-        print("remove item")
+    func removeItem(removeItem: SpecificTypeOfFoodElement) {
+        print(removeItem.id)
+        if let index = globalArray.firstIndex(of: removeItem) {
+            globalArray.remove(at: index)
+        } else {
+            print("Element not found in the array")
+        }
     }
 }

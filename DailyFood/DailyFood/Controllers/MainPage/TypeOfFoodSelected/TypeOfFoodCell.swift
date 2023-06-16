@@ -21,7 +21,9 @@ class TypeOfFoodCell: UICollectionViewCell {
     
     var typeFoodCellLabel = UILabel()
     
-    var image = ""
+    var imageString = ""
+    
+    var temporaryValueIDOfFood: Int = 0
         
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -50,6 +52,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         namefOfFoodLabel.adjustsFontSizeToFitWidth = true
         namefOfFoodLabel.sizeToFit()
         namefOfFoodLabel.textAlignment = .center
+        namefOfFoodLabel.textColor = .black
 
         
         priceOfFoodLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -58,9 +61,12 @@ class TypeOfFoodCell: UICollectionViewCell {
         priceOfFoodLabel.adjustsFontSizeToFitWidth = true
         priceOfFoodLabel.sizeToFit()
         priceOfFoodLabel.textAlignment = .center
+        priceOfFoodLabel.textColor = .black
+
         
         imageOfFoodImage.translatesAutoresizingMaskIntoConstraints = false
         imageOfFoodImage.image = UIImage(named: "hotdog")
+        
         
         
         addItemToBasket.translatesAutoresizingMaskIntoConstraints = false
@@ -73,33 +79,14 @@ class TypeOfFoodCell: UICollectionViewCell {
         
 
     }
-    
-    
-    @objc func addToBasket(action: UIButton) {
-        
-        if action == action {
-//            var model = SpecificTypeOfFoodElement()
-//            model.name = namefOfFoodLabel.text ?? "NoNameInModel"
-//            model.image = image
-//            model.priceOfFood = priceOfFoodLabel.text ?? "NoPriceInModel"
-//
-//            GlobalManagerArray.shared.addDataInArray(data: model)
-//
-//            addItemToBasket.setTitle("В корзині", for: .normal)
-//            addItemToBasket.backgroundColor = .systemOrange
-//            addItemToBasket.setTitleColor(.white, for: .normal)
-//
-            print("Добавлен в корзину")
-        }
-    }
 
     
     func layout() {
-        addSubview(namefOfFoodLabel)
-        addSubview(priceOfFoodLabel)
         addSubview(imageOfFoodImage)
         addSubview(addItemToBasket)
-        
+        addSubview(priceOfFoodLabel)
+        addSubview(namefOfFoodLabel)
+
         
         NSLayoutConstraint.activate([
             namefOfFoodLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -120,8 +107,10 @@ class TypeOfFoodCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            imageOfFoodImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageOfFoodImage.centerYAnchor.constraint(equalTo: centerYAnchor)
+            imageOfFoodImage.topAnchor.constraint(equalTo: topAnchor, constant: -1),
+            imageOfFoodImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 1),
+            imageOfFoodImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
+            imageOfFoodImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1)
         ])
         
         NSLayoutConstraint.activate([
@@ -134,14 +123,41 @@ class TypeOfFoodCell: UICollectionViewCell {
         
         
     }
+    //MARK: - Objc targer for button
+    
+    @objc func addToBasket(action: UIButton) {
+        
+        var model = SpecificTypeOfFoodElement()
+        model.name = namefOfFoodLabel.text ?? "NoNameInModel"
+        model.image = imageString
+        if let unwrappedPrice = priceOfFoodLabel.text, let intValue = Int(unwrappedPrice){
+            model.price = intValue
+            
+        }
+        model.id = temporaryValueIDOfFood
+        print("\(model.id)")
+        GlobalManagerArray.shared.addDataInArray(data: model)
+        
+        addItemToBasket.setTitle("В корзині", for: .normal)
+        addItemToBasket.backgroundColor = .systemOrange
+        addItemToBasket.setTitleColor(.white, for: .normal)
+        
+    }
+    
     //MARK: - Getting data from model
     func configureCollectionCell(model: SpecificTypeOfFoodElement){
         
-        priceOfFoodLabel.text = model.price.debugDescription
-        //image = model.imageFood!
-        //imageOfFoodImage.image = UIImage(named: model.image)
-        namefOfFoodLabel.text = model.name
-        //typeFoodCellLabel.text = model.categoryID.debugDescription
+        imageString = model.image ?? "notValue in configureCell"
         
+        temporaryValueIDOfFood = model.id ?? 111
+        
+        if let imageData = Data(base64Encoded: model.image ?? "hotdog"){
+            if let image = UIImage(data: imageData){
+                imageOfFoodImage.image = image
+                
+            }
+        }
+        priceOfFoodLabel.text = "\(Int(model.price ?? 000))"
+        namefOfFoodLabel.text = model.name ?? "noValueinConfigureSell"
     }
 }

@@ -29,7 +29,7 @@ class BasketCollectionViewCell: UICollectionViewCell {
     
     var image = ""
     
-    
+    var temporaryValueIDofFood: Int = 0
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -134,21 +134,27 @@ class BasketCollectionViewCell: UICollectionViewCell {
     
     @objc func removeFromBasket(action: UIButton){
         if action == action {
-//            var model = SpecificTypeOfFoodElement.self
-//            model.nameFood = nameItem.text ?? "NoNameInModel"
-//            //model.imageFood = image
-//            model.priceOfFood = priceItem.text ?? "NoPriceInModel"
-//            GlobalManagerArray.shared.removeItem(removeItem: model)
-//            delegate?.reloadData() // running method "reloadData" in Delegate
-            print("RemoveFromBasket Not working need to recreated with new model")
+            var model = SpecificTypeOfFoodElement()
+            model.name = nameItem.text ?? "NoNameInModel"
+            model.price = Int(priceItem.text!)
+            model.id = temporaryValueIDofFood
+            GlobalManagerArray.shared.removeItem(removeItem: model)
+            delegate?.reloadData() 
         }
     }
     
     func configureCollectionViewCell(model: SpecificTypeOfFoodElement){
-        //imageOfOrdersImage.image = UIImage(named: model.imageFood!)
-        //image = model.imageFood!
-        priceItem.text = model.price.debugDescription
-        nameItem.text = model.name?.debugDescription
+        
+        temporaryValueIDofFood = model.id ?? 111
+        
+        if let imageData = Data(base64Encoded: model.image ?? "hotdog"){
+            if let image = UIImage(data: imageData){
+                imageOfOrdersImage.image = image
+            }
+        }
+        
+        priceItem.text = "\(Int(model.price ?? 000)) ₴"
+        nameItem.text = model.name ?? "NoValueCOnfigureCell"
         
     }
     

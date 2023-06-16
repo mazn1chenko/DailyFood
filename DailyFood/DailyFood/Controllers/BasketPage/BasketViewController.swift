@@ -51,8 +51,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1 {
-            let add = GlobalManagerArray.shared.getArray()
-            addedItem = add
+            addedItem = GlobalManagerArray.shared.getArray()
             basketCollectionView?.reloadData()
             let sumAndCount = GlobalManagerArray.shared.getSumOfItemPriceAndCount()
             labelWithButtonBuy.text = "\(sumAndCount.1) товари на суму  \(sumAndCount.0)₴"

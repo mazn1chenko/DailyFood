@@ -8,15 +8,19 @@
 import Foundation
 
 // MARK: - SpecificTypeOfFoodElement
-struct SpecificTypeOfFoodElement: Codable {
+struct SpecificTypeOfFoodElement: Codable, Equatable {
+    static func == (lhs: SpecificTypeOfFoodElement, rhs: SpecificTypeOfFoodElement) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 
     
-    let name: String?
-    let price, categoryID: Int?
-    let category: JSONNull?
-    let image: String?
-    let orderParts: [JSONAny]?
-    let id: Int?
+    var name: String?
+    var price, categoryID: Int?
+    var category: JSONNull?
+    var image: String?
+    var orderParts: [JSONAny]?
+    var id: Int?
 
     enum CodingKeys: String, CodingKey {
         case name, price

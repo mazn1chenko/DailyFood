@@ -17,13 +17,11 @@ class DataManager {
         
         ApiManager.shared.gettingTypeOfFood { typeOfProduct in
             self.typeOfFood = typeOfProduct
-            print("Сработала функция внутри ДатаМенеджера класса колво типов функций\(self.typeOfFood.count)")
             completion()
         }
         
         ApiManager.shared.gettingSpecificTypeOfFood { specificProducts in
             self.specificFood = specificProducts
-            print("Сработала функция внутри ДатаМенеджера класса колво типов функций\(self.specificFood.count)")
             completion()
         }
     }
