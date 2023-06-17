@@ -95,21 +95,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
         
         
     }
-    
-    @objc func buyItems(action: UIButton) {
-        
-        if action == action {
-            let dialogeMessage = UIAlertController(title: "Увага!", message: "Кнопка ще в розробці", preferredStyle: .alert)
-            let buttonOK = UIAlertAction(title: "Добре!", style: .default)
-            dialogeMessage.addAction(buttonOK)
-            self.present(dialogeMessage, animated: true)
-            
 
-        }
-    }
-    
-    
-    
     func layout() {
         view.addSubview(labelWithButtonBuy)
         view.addSubview(buyButton)
@@ -139,6 +125,22 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
         
     }
     
+    //MARK: - Objc targer for button
+
+    
+    @objc func buyItems(action: UIButton) {
+        
+        if action == action {
+            let dialogeMessage = UIAlertController(title: "Увага!", message: "Кнопка ще в розробці", preferredStyle: .alert)
+            let buttonOK = UIAlertAction(title: "Добре!", style: .default)
+            dialogeMessage.addAction(buttonOK)
+            self.present(dialogeMessage, animated: true)
+            
+
+        }
+    }
+    
+    //MARK: - Some functions
     
     func settingsNavBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
@@ -162,7 +164,7 @@ class BasketViewController: UIViewController, UITabBarControllerDelegate, Collec
 }
 
 
-//MARK: - Extensions
+    //MARK: - Extensions
 extension BasketViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return addedItem.count

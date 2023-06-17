@@ -26,6 +26,9 @@ class DeliveryPageViewController: UIViewController {
         
     }
     
+    //MARK: - Default two function Setup and Layout
+
+    
     func setup() {
         let cornerRadius: CGFloat = 16
 

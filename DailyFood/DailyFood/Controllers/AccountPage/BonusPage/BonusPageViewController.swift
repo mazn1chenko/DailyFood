@@ -34,7 +34,8 @@ class BonusPageViewController: UIViewController {
 
     }
     
-    
+    //MARK: - Default two function Setup and Layout
+
     func setup() {
         cardView.translatesAutoresizingMaskIntoConstraints = false
         cardView.backgroundColor = .brown

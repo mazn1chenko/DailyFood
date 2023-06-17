@@ -14,6 +14,10 @@ class OrdersPageViewController: UIViewController {
     let layoutFlow = UICollectionViewFlowLayout()
 
     let countOfOrders = ["hotdog", "hotdog"]
+    
+    var dataManager = DataManager()
+    
+    var infoAboutAllOrders: AllOrdersOfUser = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,8 @@ class OrdersPageViewController: UIViewController {
         
         setup()
         layout()
+        gettingDataAboutAllOrdersOfUser()
+        
         
     }
     //MARK: - Default two function Setup and Layout
@@ -67,6 +73,18 @@ class OrdersPageViewController: UIViewController {
         ])
         
     }
+    
+    //MARK: - NetworkAndGettingData
+    
+    func gettingDataAboutAllOrdersOfUser(){
+        dataManager.fetchInfoOrdersOfUser {
+            self.infoAboutAllOrders = self.dataManager.infoAboutOrders
+            DispatchQueue.main.async {
+                self.ordersCollectionView?.reloadData()
+
+            }
+        }
+    }
 
 }
 
@@ -75,7 +93,7 @@ class OrdersPageViewController: UIViewController {
 
 extension OrdersPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return countOfOrders.count
+        return infoAboutAllOrders.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,7 +102,7 @@ extension OrdersPageViewController: UICollectionViewDataSource {
         
         cell?.locationOrder.addTarget(self, action: #selector(location(action:)), for: .touchUpInside)
         
-        cell!.configureCollectionViewCell(image: countOfOrders[indexPath.row])
+        cell!.configureCollectionViewCell(model: infoAboutAllOrders[indexPath.row])
         
         return cell!
     }

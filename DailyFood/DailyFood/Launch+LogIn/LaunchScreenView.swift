@@ -10,7 +10,7 @@ import UIKit
 class LaunchScreenView: UIViewController {
     
     let viewScreenImage = UIImageView(image: UIImage(named: "launchScreen"))
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +18,7 @@ class LaunchScreenView: UIViewController {
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.isNavigationBarHidden = true
-
+        
         setup()
         layout()
         
@@ -26,14 +26,14 @@ class LaunchScreenView: UIViewController {
             self.pushMainWindow()
         }
         
-
+        
     }
     
+    //MARK: - Default two function Setup and Layout
+    
     func setup(){
-                
+        
         viewScreenImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         
     }
     
@@ -55,5 +55,5 @@ class LaunchScreenView: UIViewController {
         navigationController?.pushViewController(LogInViewController(), animated: true)
         
     }
-
+    
 }

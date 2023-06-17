@@ -36,17 +36,7 @@ class TypeOfFoodSelected: UIViewController {
 
  
     }
-    
-    func network() {
-        dataManager.fetch{
-            DispatchQueue.main.async {
-                self.allFoodArray = self.dataManager.specificFood
-                self.typeOfFood = self.dataManager.typeOfFood
-                self.funcSortedArray()
-                self.collectionView?.reloadData()
-            }
-        }
-    }
+
     
     //MARK: - Default two function Setup and Layout
 
@@ -84,6 +74,19 @@ class TypeOfFoodSelected: UIViewController {
   
     }
     
+    //MARK: - NetworkAndGettingData
+
+    func network() {
+        dataManager.fetchTypeOfFoodAndAllSpecificFood {
+            DispatchQueue.main.async {
+                self.allFoodArray = self.dataManager.specificFood
+                self.typeOfFood = self.dataManager.typeOfFood
+                self.funcSortedArray()
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
     func settingsNavBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
         
@@ -100,7 +103,7 @@ class TypeOfFoodSelected: UIViewController {
     }
 
 }
-//MARK: - Extensions
+    //MARK: - Extensions
 extension TypeOfFoodSelected: UICollectionViewDelegate{
     
 }

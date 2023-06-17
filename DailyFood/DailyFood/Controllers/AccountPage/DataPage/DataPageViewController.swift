@@ -26,7 +26,8 @@ class DataPageViewController: UIViewController {
 
     }
     
-    //setup of two leading elements
+    //MARK: - Default two function Setup and Layout
+    
     func setup() {
         secondNameLabel.translatesAutoresizingMaskIntoConstraints = false
         secondNameLabel.text = "Прізвище"
@@ -100,7 +101,8 @@ class DataPageViewController: UIViewController {
     }
     
     
-    //initializer for creating labels
+    //MARK: - Some functions
+    
     func createLabel(withConstraints constraints: [(centerX: NSLayoutXAxisAnchor, height: CGFloat, width: CGFloat)], text: String) -> UILabel{
         let label = UILabel()
 

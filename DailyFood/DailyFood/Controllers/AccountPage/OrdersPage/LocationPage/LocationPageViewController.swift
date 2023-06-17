@@ -53,7 +53,7 @@ class LocationPageViewController: UIViewController {
         
     }
     
-    //I dont know how i created this however - works
+    //I dont know how i created this, however - works
     func setupPlaceMark(address: String) {
         
         let geoCoder = CLGeocoder()

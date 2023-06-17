@@ -40,16 +40,6 @@ class MainViewController: UIViewController{
         
         
     }
-    //MARK: - Getting data from DataManager
-    func network() {
-        dataManager.fetch{
-            DispatchQueue.main.async {
-                self.typeOfFood = self.dataManager.typeOfFood
-                self.collectionView?.reloadData()
-            }
-        }
-    }
-
     
     //MARK: - Default two function Setup and Layout 
     func setup() {
@@ -84,6 +74,16 @@ class MainViewController: UIViewController{
 
         ])
         
+    }
+    
+    //MARK: - Getting data from DataManager
+    func network() {
+        dataManager.fetchTypeOfFoodAndAllSpecificFood {
+            DispatchQueue.main.async {
+                self.typeOfFood = self.dataManager.typeOfFood
+                self.collectionView?.reloadData()
+            }
+        }
     }
     
     

@@ -48,7 +48,6 @@ class BasketCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Default two function Setup and Layout
 
-    
     func setup() {
         
         imageOfOrdersImage.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +131,8 @@ class BasketCollectionViewCell: UICollectionViewCell {
         
     }
     
+    //MARK: - Objc targer for button
+
     @objc func removeFromBasket(action: UIButton){
         if action == action {
             var model = SpecificTypeOfFoodElement()
@@ -143,6 +144,8 @@ class BasketCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - ConfiguratinFunctionOfCell
+
     func configureCollectionViewCell(model: SpecificTypeOfFoodElement){
         
         temporaryValueIDofFood = model.id ?? 111

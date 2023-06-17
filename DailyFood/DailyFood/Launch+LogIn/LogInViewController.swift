@@ -26,9 +26,9 @@ class LogInViewController: UIViewController {
         setup()
         layout()
         
-
-
     }
+    
+    //MARK: - Default two function Setup and Layout
     
     func setup() {
         imageDailyFood.translatesAutoresizingMaskIntoConstraints = false
@@ -156,6 +156,8 @@ class LogInViewController: UIViewController {
         
     }
     
+    //MARK: - Objc targer for button
+    
     @objc func logInButton(action: UIButton){
         
         func alertError() {
@@ -192,9 +194,6 @@ class LogInViewController: UIViewController {
             }
         }
         
-        
-
-        
     }
     
     @objc func registrButton(action: UIButton){
@@ -206,6 +205,9 @@ class LogInViewController: UIViewController {
     }
 
 }
+
+    //MARK: - Extensions
+
 extension LogInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

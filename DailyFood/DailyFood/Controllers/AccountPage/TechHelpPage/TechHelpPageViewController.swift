@@ -25,6 +25,8 @@ class TechHelpPageViewController: UIViewController, UITextFieldDelegate, UITextV
         layout()
     }
     
+    //MARK: - Default two function Setup and Layout
+
     func setup() {
         
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -106,6 +108,8 @@ class TechHelpPageViewController: UIViewController, UITextFieldDelegate, UITextV
         ])
         
     }
+    
+    //MARK: - Some functions
     
     //when we want`s to go to next textField, we need to use this functions, which can remove us to next textField when we tapped
     //on button from prop "ReturnKeyType"

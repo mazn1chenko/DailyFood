@@ -63,7 +63,10 @@ class ApiManager {
     
     static let shared = ApiManager()
     
+    var userID : Int = 0
     
+    var nameOfUser = ""
+    var surnameOfUser = ""
     
     func loginFunc(login: String, password: String, completion: @escaping (ModelUsers) -> Void) {
         var headers = ApiType.login.headers
@@ -82,6 +85,9 @@ class ApiManager {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if let data = data, let user = try? JSONDecoder().decode(ModelUsers.self, from: data){
+                self.userID = user.id ?? 000
+                self.nameOfUser = user.name ?? "NoName"
+                self.surnameOfUser = user.surname ?? "NoSurname"
                 completion(user)
             }else{
                 print("SomethingWrong")
@@ -94,13 +100,13 @@ class ApiManager {
     func gettingTypeOfFood(completion: @escaping ([TypeOfFoodAPIElement]) -> Void) {
         let path = "/categories/"
         let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232")!)!
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if let data = data, let typeOfFood = try? JSONDecoder().decode([TypeOfFoodAPIElement].self, from: data){
                 completion(typeOfFood)
             }else{
-                print("SomethingWrong")
+                print("SomethingWrongInAPIManagerFuncgettingTypeOfFood")
             }
             
         }
@@ -111,13 +117,32 @@ class ApiManager {
     func gettingSpecificTypeOfFood(completion: @escaping([SpecificTypeOfFoodElement]) -> Void)  {
         let path = "/dishes"
         let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232")!)!
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if let data = data, let food = try? JSONDecoder().decode([SpecificTypeOfFoodElement].self, from: data){
                 completion(food)
             }else{
-                print("SomethingWrong")
+                print("SomethingWrongInAPIManagerFuncgettingSpecificTypeOfFood")
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
+    func gettingAllOrdersOfUser(completion: @escaping ([AllOrdersOfUserElement]) -> Void) {
+        //http://20.4.141.232/orders/user/2
+        let headers = userID
+        let path = "\(headers)"
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/orders/user/")!)!
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request){ data, response, error in
+            print(request)
+            if let data = data, let orders = try? JSONDecoder().decode([AllOrdersOfUserElement].self, from: data){
+                completion(orders)
+            }else{
+                print("SomethingWrongInAPIManagerFuncgettingAllOrdersOfUser")
             }
             
         }

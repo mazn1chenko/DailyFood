@@ -15,6 +15,7 @@ class AccountViewController: UIViewController{
     let tableView = UITableView()
     let identifier = "MyCell"
     let arrayOfType = ["Мої закази","Мої дані","Мої бонуси","Адреса доставки", "Технічна підтримка","Увiйти до аккаунт"]
+    let dataManager = DataManager()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -27,17 +28,20 @@ class AccountViewController: UIViewController{
         setup()
         layout()
         settingsNavBar()
+        gettingInfoAboutUser()
         
     }
     
     //MARK: - Default two function Setup and Layout
 
     func setup(){
+        
         nameClientLabel.translatesAutoresizingMaskIntoConstraints = false
         nameClientLabel.textAlignment = .center
         nameClientLabel.text = "ІМ'Я ТА ПРІЗВИЩЕ"
         nameClientLabel.font = UIFont(name: "American Typewriter", size: 16)
         nameClientLabel.textColor = .gray
+
         
         
         imageClientImage.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +54,6 @@ class AccountViewController: UIViewController{
         tableView.dataSource = self
         tableView.backgroundColor = backgroundOfAllApps
         tableView.isScrollEnabled = false
-        
     }
     
     func layout(){
@@ -88,12 +91,31 @@ class AccountViewController: UIViewController{
         
     }
     
+    //MARK: - Network
+    
+    func gettingInfoAboutUser() {
+        dataManager.fetchInfoUser {
+            DispatchQueue.main.async {
+                self.nameClientLabel.text = "\(self.dataManager.name) \(self.dataManager.surname)"
+
+            }
+            
+        }
+        print(nameClientLabel.text)
+    }
+    
+    //MARK: - Some functions
+    
     func settingsNavBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20) as Any]
         
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .lightGray
     }
+    
+    
 }
+
+    //MARK: - Extensions
 
 extension AccountViewController: UITableViewDelegate{
     
@@ -117,7 +139,9 @@ extension AccountViewController: UITableViewDelegate{
         case 4:
             navigationController?.pushViewController(TechHelpPageViewController(), animated: true)
             
-        case 5:
+            
+            //Login in googleAccount
+      /*  case 5:
             GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
                 guard error == nil else { return }
                 
@@ -143,7 +167,7 @@ extension AccountViewController: UITableViewDelegate{
 //
 //                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
                 
-            }
+            } */
             
             
         default: break

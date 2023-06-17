@@ -42,6 +42,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         backGroungImageCell.translatesAutoresizingMaskIntoConstraints = false
         
     }
+    
     func layout(){
         addSubview(backGroungImageCell)
         addSubview(nameOfTypeFood)
@@ -63,7 +64,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
         
         
     }
-    //MARK: - method getting data from model
+    //MARK: - ConfiguratinFunctionOfCell
+    
     func configureCollectionCell(model: TypeOfFoodAPIElement){
         nameOfTypeFood.text = model.name
     }

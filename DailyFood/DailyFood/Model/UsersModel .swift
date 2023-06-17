@@ -7,11 +7,13 @@ import Foundation
 
 // MARK: - ModelUsers
 struct ModelUsers: Codable {
+
+    
     let login, password, phoneNumber: String?
     let bonuses: Int?
     let status: Bool?
     let dob: String?
-    let orders: [JSONAny]?
+    //let orders: [JSONAny]?
     let name, surname: String?
     let id: Int?
 }
@@ -257,3 +259,4 @@ class JSONAny: Codable {
         }
     }
 }
+

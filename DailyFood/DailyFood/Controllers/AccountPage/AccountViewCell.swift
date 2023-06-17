@@ -42,6 +42,8 @@ class AccountViewCell: UITableViewCell {
         ])
     }
     
+    //MARK: - ConfiguratinFunctionOfCell
+
     func configureCell(model: String){
         nameOfType.text = model
         

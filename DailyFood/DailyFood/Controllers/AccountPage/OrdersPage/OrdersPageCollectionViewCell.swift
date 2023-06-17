@@ -13,7 +13,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     
     let imageOfOrdersImage = UIImageView()
     
-    let numberOfOrdersLabel = UILabel()
+    var numberOfOrdersLabel = UILabel()
     
     let dateOrdersLabel = UILabel()
     
@@ -53,14 +53,14 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         sumOfCurrentOrdersLabel.text = "Сума \(sumOfOrdersCount) ₴"
         sumOfCurrentOrdersLabel.textColor = .black
         sumOfCurrentOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
-
+        
         
         
         numberOfOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         numberOfOrdersLabel.text = "№ \(numberOfOrdersCount)"
         numberOfOrdersLabel.textColor = .black
         numberOfOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
-                      
+        
         dateOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         dateOrdersLabel.text = "5 квітня 2023"
         dateOrdersLabel.textAlignment = .right
@@ -80,11 +80,12 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         locationOrder.backgroundColor = .orange
         locationOrder.titleLabel?.font = UIFont(name: "American Typewriter", size: 14)
         locationOrder.titleLabel?.textAlignment = .right
-
+        locationOrder.layer.cornerRadius = 10
+        locationOrder.sizeToFit()
+        
         
         
     }
-
     
     func layout() {
         addSubview(imageOfOrdersImage)
@@ -100,7 +101,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             imageOfOrdersImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.5),
             imageOfOrdersImage.heightAnchor.constraint(equalToConstant: bounds.height / 2.5),
             imageOfOrdersImage.widthAnchor.constraint(equalToConstant: bounds.height / 2.5)
-
+            
         ])
         
         NSLayoutConstraint.activate([
@@ -136,18 +137,39 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             
             locationOrder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             locationOrder.bottomAnchor.constraint(equalTo: statusOfCurrentOrders.topAnchor),
-            locationOrder.heightAnchor.constraint(equalToConstant: 30),
-            locationOrder.widthAnchor.constraint(equalToConstant: 150)
+            locationOrder.heightAnchor.constraint(equalToConstant: 30)
             
         ])
         
     }
     
-    //getting data(image) from model
-    func configureCollectionViewCell(image: String){
+    //MARK: - ConfiguratinFunctionOfCell
+    
+    func configureCollectionViewCell(model: AllOrdersOfUserElement){
         
-        imageOfOrdersImage.image = UIImage(named: image)
-        
+        numberOfOrdersLabel.text = "№ \(model.id ?? 000)"
+        sumOfCurrentOrdersLabel.text = "Ваня кде цена заказа"
+        dateOrdersLabel.text = {
+            var readyDate = ""
+            var dateString = model.startTime
+            var dateFormater = DateFormatter()
+            dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            if let date = dateFormater.date(from: dateString ?? "NoDate"){
+                readyDate = "\(date)"
+            }else{
+                readyDate = "NoDate"
+            }
+            return String(readyDate.dropLast(6))
+        }()
+        statusOfCurrentOrders.text = {
+            var text = ""
+            if model.status == false{
+                text = "В обробці"
+            }else{
+                text = "Завершений"
+            }
+            return text
+        }()
     }
     
     
