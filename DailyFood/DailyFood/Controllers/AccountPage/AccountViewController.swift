@@ -101,7 +101,6 @@ class AccountViewController: UIViewController{
             }
             
         }
-        print(nameClientLabel.text)
     }
     
     //MARK: - Some functions

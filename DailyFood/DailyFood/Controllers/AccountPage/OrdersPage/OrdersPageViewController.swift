@@ -12,28 +12,33 @@ class OrdersPageViewController: UIViewController {
     private var ordersCollectionView : UICollectionView?
     
     let layoutFlow = UICollectionViewFlowLayout()
-
-    let countOfOrders = ["hotdog", "hotdog"]
     
     var dataManager = DataManager()
     
     var infoAboutAllOrders: AllOrdersOfUser = []
-
+    
+    var allSpecificAboutOrderPriceImage: SpecificOrder = []
+    
+    var allId = [Int]()
+    
+    var concretycaliyFood: SpecificTypeOfFood = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Мої закази"
-
+        
         view.backgroundColor = backgroundOfAllApps
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         
-            navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .black
         
         
         setup()
         layout()
         gettingDataAboutAllOrdersOfUser()
+        changeValueInArrayFromApi()
         
         
     }
@@ -77,16 +82,35 @@ class OrdersPageViewController: UIViewController {
     //MARK: - NetworkAndGettingData
     
     func gettingDataAboutAllOrdersOfUser(){
-        dataManager.fetchInfoOrdersOfUser {
-            self.infoAboutAllOrders = self.dataManager.infoAboutOrders
+        self.dataManager.fetchInfoOrdersOfUser {
             DispatchQueue.main.async {
+                self.infoAboutAllOrders = self.dataManager.infoAboutOrders
                 self.ordersCollectionView?.reloadData()
-
+                
             }
+            
+            self.dataManager.fetchTypeOfFoodAndAllSpecificFood {
+                if self.dataManager.sortedArrayOfSpecificFoodOfID.count > 0{
+                    self.changeValueInArrayFromApi()
+                }
+            }
+            
         }
+        
+    }
+    func changeValueInArrayFromApi() {
+        self.concretycaliyFood = self.dataManager.sortedArrayOfSpecificFoodOfID
+        DispatchQueue.main.async {
+            self.ordersCollectionView?.reloadData()
+
+        }
+        print(self.concretycaliyFood.count)
+
     }
 
 }
+
+
 
 
 //MARK: - Extensions
@@ -101,8 +125,11 @@ extension OrdersPageViewController: UICollectionViewDataSource {
         let cell = ordersCollectionView?.dequeueReusableCell(withReuseIdentifier: OrdersPageCollectionViewCell.reuseID, for: indexPath) as? OrdersPageCollectionViewCell
         
         cell?.locationOrder.addTarget(self, action: #selector(location(action:)), for: .touchUpInside)
-        
-        cell!.configureCollectionViewCell(model: infoAboutAllOrders[indexPath.row])
+        if concretycaliyFood.count > 0 {
+            cell!.configureCollectionViewCell2(model: infoAboutAllOrders[indexPath.row], priceAndImage: concretycaliyFood[indexPath.row])
+        }else{
+            cell!.configureCollectionViewCell1(model: infoAboutAllOrders[indexPath.row])
+        }
         
         return cell!
     }

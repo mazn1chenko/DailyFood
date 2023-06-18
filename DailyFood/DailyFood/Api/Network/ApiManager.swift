@@ -67,6 +67,8 @@ class ApiManager {
     
     var nameOfUser = ""
     var surnameOfUser = ""
+    var allIdOfUser = [Int]()
+    
     
     func loginFunc(login: String, password: String, completion: @escaping (ModelUsers) -> Void) {
         var headers = ApiType.login.headers
@@ -80,7 +82,6 @@ class ApiManager {
         
         //var request = ApiType.login.request
         request.allHTTPHeaderFields = headers
-        print("Request: \(request)")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -106,7 +107,7 @@ class ApiManager {
             if let data = data, let typeOfFood = try? JSONDecoder().decode([TypeOfFoodAPIElement].self, from: data){
                 completion(typeOfFood)
             }else{
-                print("SomethingWrongInAPIManagerFuncgettingTypeOfFood")
+                print("SomethingWrongInAPIManagerFuncGettingTypeOfFood")
             }
             
         }
@@ -123,7 +124,7 @@ class ApiManager {
             if let data = data, let food = try? JSONDecoder().decode([SpecificTypeOfFoodElement].self, from: data){
                 completion(food)
             }else{
-                print("SomethingWrongInAPIManagerFuncgettingSpecificTypeOfFood")
+                print("SomethingWrongInAPIManagerFuncGettingSpecificTypeOfFood")
             }
             
         }
@@ -138,11 +139,28 @@ class ApiManager {
         let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/orders/user/")!)!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request){ data, response, error in
-            print(request)
             if let data = data, let orders = try? JSONDecoder().decode([AllOrdersOfUserElement].self, from: data){
                 completion(orders)
+                
             }else{
-                print("SomethingWrongInAPIManagerFuncgettingAllOrdersOfUser")
+                print("SomethingWrongInAPIManagerFuncGettingAllOrdersOfUser")
+            }
+            
+        }
+        task.resume()
+        
+    }
+    func gettingSpecificDataOfUserOrders(headerOfId: Int, completion: @escaping ([SpecificOrderElement]) -> Void) {
+        let headers = headerOfId
+        let path = "\(headers)"
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/orderparts/orderid/")!)!
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request){ data, response, error in
+            if let data = data, let specificOrder = try? JSONDecoder().decode([SpecificOrderElement].self, from: data){
+                completion(specificOrder)
+                
+            }else{
+                print("SomethingWrongInAPIManagerFuncGettingSpecificDataOfUserOrders")
             }
             
         }

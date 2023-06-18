@@ -15,6 +15,10 @@ class DataManager {
     var infoAboutOrders: AllOrdersOfUser = []
     var name : String?
     var surname : String?
+    //var AllIDOfOrders = [Int]()
+    var allSpecificAboutOrder: SpecificOrder = []
+    var dishIDArray = [Int]()
+    var sortedArrayOfSpecificFoodOfID : SpecificTypeOfFood = []
     
     func fetchTypeOfFoodAndAllSpecificFood(completion: @escaping () -> Void) {
         
@@ -32,19 +36,58 @@ class DataManager {
         }
     }
     
-    func fetchInfoOrdersOfUser(completion: @escaping () -> Void){
+    func fetchInfoOrdersOfUser(completion: @escaping () -> Void) {
+        let group = DispatchGroup()
         
         ApiManager.shared.gettingAllOrdersOfUser { allOrders in
             self.infoAboutOrders = allOrders
-            print(self.infoAboutOrders)
-            completion()
+            if self.infoAboutOrders.count > 0 {
+                for b in self.infoAboutOrders {
+                    group.enter()
+                    ApiManager.shared.gettingSpecificDataOfUserOrders(headerOfId: b.id!) { specificElement in
+                        self.allSpecificAboutOrder.append(contentsOf: specificElement)
+                        for i in self.allSpecificAboutOrder {
+                            self.dishIDArray.append(i.dishID!)
+                        }
+                        group.leave()
+                    }
+                }
+                
+                group.notify(queue: .main) {
+                    self.fetchTypeOfFoodAndAllSpecificFood {
+                        self.sortedArrayOfSpecificFoodOfID = self.specificFood.filter { self.dishIDArray.contains($0.id!) }
+                        print("Это массив когда уже приходит в ДатаМенеджер: \(self.sortedArrayOfSpecificFoodOfID.count)")
+                        completion()
+                    }
+                }
+            } else {
+                completion()
+            }
         }
     }
-    
-    func fetchInfoUser(comletion: @escaping () -> Void){
-        self.name = ApiManager.shared.nameOfUser
-        self.surname = ApiManager.shared.surnameOfUser
+
+
+
+
+
+
+
+        
+        func fetchInfoUser(comletion: @escaping () -> Void){
+            self.name = ApiManager.shared.nameOfUser
+            self.surname = ApiManager.shared.surnameOfUser
+            
+        }
+        
+        //    func fetchDataOfSpecificOrder(completion: @escaping () -> Void){
+        //        for i in AllIDOfOrders {
+        //            print("I - которое приходит с даты в Апи с эррея \(i)")
+        //            ApiManager.shared.gettingSpecificDataOfUserOrders(headerOfId: i) { specificOrderElement in
+        //                self.allSpecificAboutOrder.append(specificOrderElement)
+        //            }
+        //        }
+        //
+        //    }
         
     }
-    
-}
+

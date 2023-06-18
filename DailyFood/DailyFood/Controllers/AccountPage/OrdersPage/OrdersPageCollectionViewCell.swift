@@ -145,14 +145,14 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     
     //MARK: - ConfiguratinFunctionOfCell
     
-    func configureCollectionViewCell(model: AllOrdersOfUserElement){
+    func configureCollectionViewCell2(model: AllOrdersOfUserElement, priceAndImage: SpecificTypeOfFoodElement){
         
         numberOfOrdersLabel.text = "№ \(model.id ?? 000)"
         sumOfCurrentOrdersLabel.text = "Ваня кде цена заказа"
         dateOrdersLabel.text = {
             var readyDate = ""
-            var dateString = model.startTime
-            var dateFormater = DateFormatter()
+            let dateString = model.startTime
+            let dateFormater = DateFormatter()
             dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
             if let date = dateFormater.date(from: dateString ?? "NoDate"){
                 readyDate = "\(date)"
@@ -170,6 +170,43 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             }
             return text
         }()
+        
+        sumOfCurrentOrdersLabel.text = "\(priceAndImage.price ?? 111)"
+        
+        if let imageData = Data(base64Encoded: priceAndImage.image ?? "hotdog"){
+            if let image = UIImage(data: imageData){
+                imageOfOrdersImage.image = image
+                
+            }
+        }
+        
+    }
+    func configureCollectionViewCell1(model: AllOrdersOfUserElement){
+        
+        numberOfOrdersLabel.text = "№ \(model.id ?? 000)"
+        sumOfCurrentOrdersLabel.text = "Ваня кде цена заказа"
+        dateOrdersLabel.text = {
+            var readyDate = ""
+            let dateString = model.startTime
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            if let date = dateFormater.date(from: dateString ?? "NoDate"){
+                readyDate = "\(date)"
+            }else{
+                readyDate = "NoDate"
+            }
+            return String(readyDate.dropLast(6))
+        }()
+        statusOfCurrentOrders.text = {
+            var text = ""
+            if model.status == false{
+                text = "В обробці"
+            }else{
+                text = "Завершений"
+            }
+            return text
+        }()
+        
     }
     
     

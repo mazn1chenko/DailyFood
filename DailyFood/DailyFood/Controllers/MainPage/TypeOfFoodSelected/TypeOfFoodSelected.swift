@@ -83,6 +83,7 @@ class TypeOfFoodSelected: UIViewController {
                 self.typeOfFood = self.dataManager.typeOfFood
                 self.funcSortedArray()
                 self.collectionView?.reloadData()
+                print(self.allFoodArray.count)
             }
         }
     }
