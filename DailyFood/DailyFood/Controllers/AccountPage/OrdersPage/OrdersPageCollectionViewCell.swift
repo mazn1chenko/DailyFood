@@ -25,7 +25,9 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     
     let statusOfCurrentOrders = UILabel()
     
-    let locationOrder = UIButton()
+    let locationOrderButton = UIButton()
+    
+    let payForOrderButton = UIButton()
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -74,16 +76,24 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         statusOfCurrentOrders.font = UIFont(name: "American Typewriter", size: 16)
         statusOfCurrentOrders.textAlignment = .right
         
-        locationOrder.translatesAutoresizingMaskIntoConstraints = false
-        locationOrder.setTitle("Відстежити замовлення", for: .normal)
-        locationOrder.tintColor = .white
-        locationOrder.backgroundColor = .orange
-        locationOrder.titleLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        locationOrder.titleLabel?.textAlignment = .right
-        locationOrder.layer.cornerRadius = 10
-        locationOrder.sizeToFit()
+        locationOrderButton.translatesAutoresizingMaskIntoConstraints = false
+        locationOrderButton.setTitle("Відстежити замовлення", for: .normal)
+        locationOrderButton.tintColor = .white
+        locationOrderButton.backgroundColor = .orange
+        locationOrderButton.titleLabel?.font = UIFont(name: "American Typewriter", size: 14)
+        locationOrderButton.titleLabel?.textAlignment = .right
+        locationOrderButton.layer.cornerRadius = 10
+        locationOrderButton.sizeToFit()
         
-        
+        payForOrderButton.translatesAutoresizingMaskIntoConstraints = false
+        payForOrderButton.setTitle("Оплатити", for: .normal)
+        payForOrderButton.tintColor = .white
+        payForOrderButton.backgroundColor = .orange
+        payForOrderButton.titleLabel?.font = UIFont(name: "American Typewriter", size: 14)
+        payForOrderButton.titleLabel?.textAlignment = .right
+        payForOrderButton.layer.cornerRadius = 10
+        payForOrderButton.sizeToFit()
+        payForOrderButton.isHidden = true
         
     }
     
@@ -93,7 +103,8 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         addSubview(sumOfCurrentOrdersLabel)
         addSubview(dateOrdersLabel)
         addSubview(statusOfCurrentOrders)
-        addSubview(locationOrder)
+        addSubview(locationOrderButton)
+        addSubview(payForOrderButton)
         
         NSLayoutConstraint.activate([
             
@@ -135,13 +146,24 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         ])
         NSLayoutConstraint.activate([
             
-            locationOrder.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            locationOrder.bottomAnchor.constraint(equalTo: statusOfCurrentOrders.topAnchor),
-            locationOrder.heightAnchor.constraint(equalToConstant: 30)
+            locationOrderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            locationOrderButton.bottomAnchor.constraint(equalTo: statusOfCurrentOrders.topAnchor, constant: -10),
+            locationOrderButton.heightAnchor.constraint(equalToConstant: 30)
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            
+            payForOrderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            payForOrderButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7.5),
+            payForOrderButton.heightAnchor.constraint(equalToConstant: 30),
             
         ])
         
     }
+    
+    //MARK: - Objc func for target
+    
     
     //MARK: - ConfiguratinFunctionOfCell
     
@@ -164,7 +186,8 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         statusOfCurrentOrders.text = {
             var text = ""
             if model.status == false{
-                text = "В обробці"
+                statusOfCurrentOrders.isHidden = true
+                payForOrderButton.isHidden = false
             }else{
                 text = "Завершений"
             }
@@ -206,6 +229,8 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             }
             return text
         }()
+        
+        
         
     }
     

@@ -124,7 +124,9 @@ extension OrdersPageViewController: UICollectionViewDataSource {
         
         let cell = ordersCollectionView?.dequeueReusableCell(withReuseIdentifier: OrdersPageCollectionViewCell.reuseID, for: indexPath) as? OrdersPageCollectionViewCell
         
-        cell?.locationOrder.addTarget(self, action: #selector(location(action:)), for: .touchUpInside)
+        cell?.locationOrderButton.addTarget(self, action: #selector(location(action:)), for: .touchUpInside)
+        cell?.payForOrderButton.addTarget(self, action: #selector(payButtonFunction(action:)), for: .touchUpInside)
+
         if concretycaliyFood.count > 0 {
             cell!.configureCollectionViewCell2(model: infoAboutAllOrders[indexPath.row], priceAndImage: concretycaliyFood[indexPath.row])
         }else{
@@ -135,11 +137,13 @@ extension OrdersPageViewController: UICollectionViewDataSource {
     }
     
     @objc func location(action: UIButton ){
-        
-        if action == action {
-            
+                    
             navigationController?.pushViewController(LocationPageViewController(), animated: true)
-        }
+    }
+    
+    @objc func payButtonFunction(action: UIButton){
+        
+        navigationController?.pushViewController(PayViewController(), animated: true)
     }
     
     
