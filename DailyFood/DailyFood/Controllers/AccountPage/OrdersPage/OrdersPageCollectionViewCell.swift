@@ -50,6 +50,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         
         imageOfOrdersImage.translatesAutoresizingMaskIntoConstraints = false
         imageOfOrdersImage.backgroundColor = backgroundColorOfIconItem
+        imageOfOrdersImage.layer.cornerRadius = 10
         
         sumOfCurrentOrdersLabel.translatesAutoresizingMaskIntoConstraints = false
         sumOfCurrentOrdersLabel.text = "Сума \(sumOfOrdersCount) ₴"
