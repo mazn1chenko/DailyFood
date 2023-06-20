@@ -93,6 +93,7 @@ class BonusPageViewController: UIViewController {
         cardView.addSubview(barCodeLabel)
         cardView.addSubview(barcodeImage)
         view.addSubview(infoAboutBonusCard)
+        print(cardView.bounds.width)
         
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),

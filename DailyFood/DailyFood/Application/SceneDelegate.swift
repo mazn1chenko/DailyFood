@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let navControllerLaunch = UINavigationController(rootViewController: LaunchScreenView())
         
-        window.rootViewController = PayViewController()
+        window.rootViewController = navControllerLaunch
+        
         
         window.makeKeyAndVisible()
         self.window = window

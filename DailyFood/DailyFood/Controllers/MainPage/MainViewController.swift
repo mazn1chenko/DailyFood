@@ -38,8 +38,8 @@ class MainViewController: UIViewController{
         navigationItem.backBarButtonItem?.tintColor = .gray
         navigationController?.navigationBar.barTintColor = backgroundOfAllApps
         
-        
     }
+
     
     //MARK: - Default two function Setup and Layout 
     func setup() {

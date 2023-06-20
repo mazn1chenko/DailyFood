@@ -66,13 +66,6 @@ class DataManager {
         }
     }
 
-
-
-
-
-
-
-        
         func fetchInfoUser(comletion: @escaping () -> Void){
             self.name = ApiManager.shared.nameOfUser
             self.surname = ApiManager.shared.surnameOfUser

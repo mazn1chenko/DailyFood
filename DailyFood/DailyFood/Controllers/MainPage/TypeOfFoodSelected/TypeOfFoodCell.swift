@@ -75,7 +75,7 @@ class TypeOfFoodCell: UICollectionViewCell {
         addItemToBasket.setTitleColor(.white, for: .normal)
         addItemToBasket.backgroundColor = .orange
         addItemToBasket.clipsToBounds = true
-        addItemToBasket.layer.cornerRadius = 8
+        addItemToBasket.layer.cornerRadius = 10
         addItemToBasket.addTarget(self, action: #selector(addToBasket(action:)), for: .touchUpInside)
         
 

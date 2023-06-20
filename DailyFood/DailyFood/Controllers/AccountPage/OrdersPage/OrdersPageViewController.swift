@@ -121,16 +121,15 @@ extension OrdersPageViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = ordersCollectionView?.dequeueReusableCell(withReuseIdentifier: OrdersPageCollectionViewCell.reuseID, for: indexPath) as? OrdersPageCollectionViewCell
-        
+
         cell?.locationOrderButton.addTarget(self, action: #selector(location(action:)), for: .touchUpInside)
         cell?.payForOrderButton.addTarget(self, action: #selector(payButtonFunction(action:)), for: .touchUpInside)
 
-        if concretycaliyFood.count > 0 {
-            cell!.configureCollectionViewCell2(model: infoAboutAllOrders[indexPath.row], priceAndImage: concretycaliyFood[indexPath.row])
-        }else{
-            cell!.configureCollectionViewCell1(model: infoAboutAllOrders[indexPath.row])
+        if concretycaliyFood.count > 0 && indexPath.row < concretycaliyFood.count {
+            cell?.configureCollectionViewCell2(model: infoAboutAllOrders[indexPath.row], priceAndImage: concretycaliyFood[indexPath.row])
+        } else {
+            cell?.configureCollectionViewCell1(model: infoAboutAllOrders[indexPath.row])
         }
         
         return cell!

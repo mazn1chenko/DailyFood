@@ -16,7 +16,7 @@ import Foundation
         
         var baseURL: String{
             
-            return "http://20.4.141.232"
+            return "http://20.4.124.65"
         }
         
         var headers: [String: String]{
@@ -33,9 +33,9 @@ import Foundation
             switch self{
             case .login: return "/users/logining"
                 
-            case .getFood: return "/loh"
+            case .getFood: return "/empty"
                 
-            case .getInfoUsers: return "/loh"
+            case .getInfoUsers: return "/empty"
                 
             }
             
@@ -77,7 +77,7 @@ class ApiManager {
         
         let path = "\(login)/\(password)"
         
-        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/users/logining/")!)!
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.124.65/users/logining/")!)!
         var request = URLRequest(url: url)
         
         //var request = ApiType.login.request
@@ -100,7 +100,7 @@ class ApiManager {
     
     func gettingTypeOfFood(completion: @escaping ([TypeOfFoodAPIElement]) -> Void) {
         let path = "/categories/"
-        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232")!)!
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.124.65")!)!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -117,8 +117,9 @@ class ApiManager {
     
     func gettingSpecificTypeOfFood(completion: @escaping([SpecificTypeOfFoodElement]) -> Void)  {
         let path = "/dishes"
-        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232")!)!
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.124.65")!)!
         let request = URLRequest(url: url)
+        print(request)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if let data = data, let food = try? JSONDecoder().decode([SpecificTypeOfFoodElement].self, from: data){
@@ -136,7 +137,7 @@ class ApiManager {
         //http://20.4.141.232/orders/user/2
         let headers = userID
         let path = "\(headers)"
-        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/orders/user/")!)!
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.124.65/orders/user/")!)!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request){ data, response, error in
             if let data = data, let orders = try? JSONDecoder().decode([AllOrdersOfUserElement].self, from: data){
@@ -153,7 +154,7 @@ class ApiManager {
     func gettingSpecificDataOfUserOrders(headerOfId: Int, completion: @escaping ([SpecificOrderElement]) -> Void) {
         let headers = headerOfId
         let path = "\(headers)"
-        let url = URL(string: path, relativeTo: URL(string: "http://20.4.141.232/orderparts/orderid/")!)!
+        let url = URL(string: path, relativeTo: URL(string: "http://20.4.124.65/orderparts/orderid/")!)!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request){ data, response, error in
             if let data = data, let specificOrder = try? JSONDecoder().decode([SpecificOrderElement].self, from: data){

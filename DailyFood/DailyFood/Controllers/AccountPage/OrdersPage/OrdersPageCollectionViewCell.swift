@@ -29,6 +29,8 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     
     let payForOrderButton = UIButton()
     
+    let placeOfOrderLabel = UILabel()
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
@@ -70,6 +72,17 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         dateOrdersLabel.textColor = .black
         dateOrdersLabel.font = UIFont(name: "American Typewriter", size: 16)
         dateOrdersLabel.textColor = .gray
+        dateOrdersLabel.numberOfLines = 0
+        
+        
+        placeOfOrderLabel.translatesAutoresizingMaskIntoConstraints = false
+        placeOfOrderLabel.text = "Готується"
+        placeOfOrderLabel.textAlignment = .right
+        placeOfOrderLabel.textColor = .black
+        placeOfOrderLabel.font = UIFont(name: "American Typewriter", size: 16)
+        placeOfOrderLabel.textColor = .gray
+        placeOfOrderLabel.isHidden = true
+        placeOfOrderLabel.numberOfLines = 0
         
         statusOfCurrentOrders.translatesAutoresizingMaskIntoConstraints = false
         statusOfCurrentOrders.text = "Очікуйте прибуття курʼєру"
@@ -106,6 +119,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
         addSubview(statusOfCurrentOrders)
         addSubview(locationOrderButton)
         addSubview(payForOrderButton)
+        addSubview(placeOfOrderLabel)
         
         NSLayoutConstraint.activate([
             
@@ -127,7 +141,14 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             dateOrdersLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             dateOrdersLabel.bottomAnchor.constraint(equalTo: imageOfOrdersImage.topAnchor, constant: -10),
             dateOrdersLabel.heightAnchor.constraint(equalToConstant: 30),
-            dateOrdersLabel.widthAnchor.constraint(equalToConstant: 200)
+            dateOrdersLabel.widthAnchor.constraint(equalToConstant: 250)
+        ])
+        
+        NSLayoutConstraint.activate([
+            placeOfOrderLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            placeOfOrderLabel.bottomAnchor.constraint(equalTo: imageOfOrdersImage.topAnchor, constant: -10),
+            placeOfOrderLabel.heightAnchor.constraint(equalToConstant: 30),
+            placeOfOrderLabel.widthAnchor.constraint(equalToConstant: 250)
         ])
         
         NSLayoutConstraint.activate([
@@ -166,12 +187,36 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
     //MARK: - Objc func for target
     
     
+    //MARK: - Some functions
+    func convertToString(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        dateComponents.second = second
+        
+        if let date = calendar.date(from: dateComponents) {
+            return formatter.string(from: date)
+        }
+        
+        return ""
+    }
+    
+    
     //MARK: - ConfiguratinFunctionOfCell
+    
+    
     
     func configureCollectionViewCell2(model: AllOrdersOfUserElement, priceAndImage: SpecificTypeOfFoodElement){
         
         numberOfOrdersLabel.text = "№ \(model.id ?? 000)"
-        sumOfCurrentOrdersLabel.text = "Ваня кде цена заказа"
+        sumOfCurrentOrdersLabel.text = "Завантаження ціни..."
         dateOrdersLabel.text = {
             var readyDate = ""
             let dateString = model.startTime
@@ -195,7 +240,7 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             return text
         }()
         
-        sumOfCurrentOrdersLabel.text = "\(priceAndImage.price ?? 111)"
+        sumOfCurrentOrdersLabel.text = "\(model.sum ?? 111) ₴"
         
         if let imageData = Data(base64Encoded: priceAndImage.image ?? "hotdog"){
             if let image = UIImage(data: imageData){
@@ -204,11 +249,31 @@ class OrdersPageCollectionViewCell: UICollectionViewCell {
             }
         }
         
+        if model.startAddress == model.endAddress && model.startTime == model.endTime{
+            dateOrdersLabel.isHidden = true
+            placeOfOrderLabel.isHidden = false
+            placeOfOrderLabel.text = "Виконано"
+        }else if model.startAddress == model.endAddress{
+            dateOrdersLabel.isHidden = false
+            placeOfOrderLabel.isHidden = true
+            dateOrdersLabel.text = "Готується"
+        }else if model.startAddress != model.endAddress && model.courierID != nil {
+            dateOrdersLabel.isHidden = false
+            placeOfOrderLabel.isHidden = true
+            dateOrdersLabel.text = "Очікуйте курʼєра № \(model.courierID!)"
+        }else if model.startAddress != model.endAddress{
+            dateOrdersLabel.isHidden = false
+            placeOfOrderLabel.isHidden = true
+            dateOrdersLabel.text = "Курʼєр ще не отримав ваше замовлення"
+        }
+        
+        
+        
     }
     func configureCollectionViewCell1(model: AllOrdersOfUserElement){
         
         numberOfOrdersLabel.text = "№ \(model.id ?? 000)"
-        sumOfCurrentOrdersLabel.text = "Ваня кде цена заказа"
+        sumOfCurrentOrdersLabel.text = "Завантаження ціни..."
         dateOrdersLabel.text = {
             var readyDate = ""
             let dateString = model.startTime
