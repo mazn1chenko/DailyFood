@@ -1,6 +1,7 @@
 # DailyFood
-Store application in which you can see the goods, make an order, track the order of the courier, accumulative system (bonuses), login to the application from Google-account. The project is not fully implemented, because it is done in a team with other people and they do not fully perform their tasks, which slows down the process.
+Store app. Authorization in the application, data about users and also data about products come from API. Ability to add items to cart, display user's orders made earlier, order status (in processing, requires payment or completed), also meant the function of bonuses and tracking courier for delivery, but the back-ender did not realize it to the end. Implemented the functionality of a minimal local alerts. The project was done as a team with a back-ender.
 
+Swift, UIKit, MVC, Programmatic UI(without storyboard), RESTfull API, CoreLocation, UserNotification(Local), Google OAuth, some GCD and Singletone
 
 https://github.com/mazn1chenko/DailyFood/assets/112626390/bd4747fd-3627-45a4-98ac-2e34bfe9db4a
 
