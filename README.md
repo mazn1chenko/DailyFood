@@ -3,5 +3,5 @@ Store app. Authorization in the application, data about users and also data abou
 
 Swift, UIKit, MVC, Programmatic UI(without storyboard), RESTfull API, CoreLocation, UserNotification(Local), Google OAuth, some GCD and Singletone
 
-https://github.com/mazn1chenko/DailyFood/assets/112626390/bd4747fd-3627-45a4-98ac-2e34bfe9db4a
+https://github.com/mazn1chenko/DailyFood/assets/112626390/3956cd63-72d4-4551-b972-53cc1ebb7a31
 
